@@ -1,0 +1,10 @@
+    //Usando composição (relação has-a) e herança (relação is-a), indique de uma forma gráfica as relações entre: 
+    //Trabalhador, Motorista, Vendedor, Administrativo e Contabilista 
+    //Triângulo, Retângulo, e Losango
+    //Professor, Aluno e Funcionário 
+    //Autocarro, Viatura, Roda, Motor, Pneu, Jante
+    // Motorista, Vendedor, Contabilista is-a Trabalhador
+    //Forma has-a Triângulo, Retângulo Losango is-a Retângulo
+    //Professor is-a Funcionário Escola has-a Professor,Aluno,Funcionário
+    //Autocarro is-a Viatura has-a Roda, Pneu, Motor,Jante
+

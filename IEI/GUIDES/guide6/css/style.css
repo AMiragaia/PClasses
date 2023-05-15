@@ -1,0 +1,24 @@
+h1 {
+    color: red;
+}
+h2 {
+    color: blue;
+}
+h3 {
+    color: green;    
+}
+h4  {
+    color: orange;    
+}
+h5 {
+    color: purple;
+}
+h6 {
+    color: grey;
+}
+.button1 {background-color: #4CAF50;} /* Green */
+.button2 {background-color: #008CBA;} /* Blue */
+.button3 {background-color: #f44336;} /* Red */
+.button4 {background-color: #e7e7e7; color: black;} /* Gray */
+.button5 {background-color: #555555;} /* Black */
+.button6 {background-color: orange;}

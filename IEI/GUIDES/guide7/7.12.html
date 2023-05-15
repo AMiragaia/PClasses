@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+            function calcular(){
+                var x = document.getElementById( "op1" );
+                var y = document.getElementById( "op2" );
+                console.log( parseFloat(x.value) ); // mostra o primeiro operador na consola
+                console.log( parseFloat(y.value) ); // mostra o segundo operador na consola
+                var z = document.getElementById( "res" );
+                z.value = parseFloat(x.value) + parseFloat(y.value);
+                console.log( z.value ); // mostra o resultado da soma na consola
+            }
+        </script>
+    </head>
+    <body>
+        <input id="op1" value="3"/>
+        <input id="op2" value="4"/>
+        <input id="res" value=""/>
+        <script> window.onload = calcular() </script>
+    </body>
+</html>
+Exercício 7.12
+Melhore o exercício anterior de forma a que o código da calculadora apenas seja
+executado após a construção completa da página.
+7.10

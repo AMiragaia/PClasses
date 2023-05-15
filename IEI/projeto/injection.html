@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link type="text/css" rel="stylesheet" href="css/normalize.min.css">
+  <link type="text/css" rel="stylesheet" href="css/font-awesome.css">
+  <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css">
+  <link type="text/css" rel="stylesheet" href="css/fontebase.css">
+  <link rel="shortcut icon" type="image/x-icon" href="img/icon.ico">
+  <script src="js/prefixfree.min.js"></script>
+  <script src="js/menuEncolher2.js"></script>
+  <style>
+  /*scrollbar*/
+  /*firefox*/
+html {
+  padding: 2rem;
+  scrollbar-width: thin;
+  scrollbar-color: #54BAB9 white;
+}
+  /*chrome*/
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #54BAB9;
+}
+
+</style>
+</head>
+<body>
+<div>
+  <h1 class="subtitle">Descrição Geral</h1>
+  <p class="fontebase">Os ataques por injeção apesar de estarem na 3ª posição no catálogo de vulnerabilidades reunidos pela OWASP em 2021,julgamos pertinente falar sobre elas pois
+    além de serem muito frequentes com uma taxa máxima de incidência de 19.09%
+    também são as vulnerabilidades mais procuradas por hackers devido à quantidade de informação que os mesmos conseguem extrair através delas sem contar
+    que em alguns casos também é possivel acessar arquivos, executar comandos,
+    alterar a base de dados, entre outras opções.
+  </p>
+  <p id="minimazorcheckpoit2" class="fontebase">
+    Por ser um catálogo com várias
+    vulnerabilidades de injeção nós decidimos escolher o SQL Injection (SQLI), o
+    Cross-site Scripting (XSS) e o OS Command Injection mas também existem
+    outras como por exemplo o Carriage Return and Line Feed Injection (CRLF Injection) e o Lightweight Directory Access Protocol Injection (LDAP Injection
+  </p>
+  <br>
+  <h1 id="minimazorcheckpoit2" class="subtitle">SQL Injection</h1>
+  <h2 id="minimazorcheckpoit2" class="subsubtitle">Descrição geral e consequências</h2>
+  <p id="minimazorcheckpoit2" class="fontebase">
+        O SQLI é uma vulnerabilidade que nos permite executar instruções SQL dentro
+    de um sistema. O atacante que explora essa vulnerabilidade tem acesso total
+    à base de dados podendo visualizar tudo o que está dentro dela incluído os
+    utilizadores e as passwords armazenados mas além disso também pode modificar a base de dados e em alguns casos também pode fazer upload de arquivos
+    para dentro do sistema o que torna uma das vulnerabilidades mais perigosas já
+    descobertas.
+    Esta vulnerabilidade é tão recorrente que já foi encontrada em sites do governo e de grandes empresas como foi o caso do governo da Turquia, da tesla
+    em 2014 e da cisco em 2018. O SQLI pode afetar qualquer website que use uma
+    base de dados como o MySQL, SQL Server entre outros mas o conceito por trás
+    e sempre o mesmo.
+
+  </p>
+  <br>
+  <h2 id="minimazorcheckpoit2" class="subsubtitle">Código exemplo</h2>
+  <p id="minimazorcheckpoit2" class="fontebase">Para ilustrar a vulnerabilidade decidimos usar como base uma pagina de login que acessa uma base de dados onde estão armazenadas os utilizadores e
+    as passwords. A página principal, index.php, irá fazer uma requisição do tipo
+    GET a um outro arquivo chamado vuln.php, que irá validar se o utilizador e
+    a password introduzidos estão na base de dados. O método GET é um tipo
+    de requisição que usa o formulário da página web para passar as informações
+    diretamente pela URL, separando-as com um ponto de interrogação. <br>
+    Exemplo: http://127.0.0.1/vuln.php?username=andre&password=p4ssw0rd<br>
+    Agora vamos analisar uma parte do codigo do arquivo vuln.php:
+  </p>
+  <center><h4 id="injection1"></h4></center>
+    <script>
+    var img = document.createElement("img");
+    img.src = "img/imagessqlcode/sqlcode1.png";
+    img.style.left = "0%";
+    img.style.position ="relative";
+    img.style.display = "inline-block";
+    img.style.height = "120px";
+    img.style.minHeight = "20%";
+    img.style.paddingTop = "1em";
+    img.style.paddingBottom = "1em";
+    img.style.paddingLeft = "1em";
+    img.style.paddingRight = "1em";
+    img.style.width = "auto";
+    var div = document.getElementById("injection1");
+    div.appendChild(img);
+    </script>
+    <script>
+    var img = document.createElement("img");
+    img.src = "img/imagessql/Fig1.png";
+    img.style.left = "0%";
+    img.style.position ="relative";
+    img.style.display = "inline-block";
+    img.style.height = "150px";
+    img.style.minHeight = "20%";
+    img.style.paddingTop = "1em";
+    img.style.paddingBottom = "1em";
+    img.style.paddingLeft = "1em";
+    img.style.paddingRight = "1em";
+    img.style.width = "auto";
+    var div = document.getElementById("injection1");
+    div.appendChild(img);
+    </script>
+    <script>
+    var img = document.createElement("img");
+    img.src = "img/imagessql/Fig2.png";
+    img.style.height = "40%";
+    img.style.left = "0%";
+    img.style.position ="relative";
+    img.style.display = "inline-block";
+    img.style.height = "150px";
+    img.style.minHeight = "20%";
+    img.style.paddingTop = "1em";
+    img.style.paddingBottom = "1em";
+    img.style.paddingLeft = "1em";
+    img.style.paddingRight = "1em";
+    img.style.width = "auto";
+    var div = document.getElementById("injection1");
+    div.appendChild(img);
+    </script>
+  <br>
+  <h2 id="minimazorcheckpoit2" class="subsubtitle">Análise da sintaxe</h2>
+  <p id="minimazorcheckpoit2" class="fontebase">A variável $conn vai criar uma conexão com a base de dados em que as variáveis
+    $servername,$ _username, $sql_password e a $db_name armazenam, respetivamente, o ip do servidor onde esta a base de dados, o utilizador, a password e
+    o nome da base de dados. Depois da variavel $conn, o "if"vai tentar se conectar
+    com o banco de dados. Já as variaveis $username e $password irão receber o
+    que o utilizador digitar. Por último a variável $sql seleciona tudo o que está
+    dentro da tabela users e compara se a variável $username está dentro da coluna
+    user_name e se a $password está dentro da coluna password.
+    A princípio quando vamos analisar o código fonte não parece haver nada de
+    errado mas o problema é que se o utilizador digitar comandos SQL nas variáveis
+    $username ou $password estes comandos serão executados como se fizessem
+    parte do código fonte.
+  </p>
+  <br>
+    <h2 id="minimazorcheckpoit2" class="subsubtitle"> Cenário de ataque</h2>
+    <h3 id="minimazorcheckpoit2" class="subsubsubtitle">Primeiro cenário - Bypass no sistema de login</h3>
+    <p id="minimazorcheckpoit2" class="fontebase">
+          Vamos imaginar que o objetivo do atacante é burlar o sistema de login mesmo
+    não sabendo qual é o utilizador ou a password que estão armazenados na base de
+    dados. Uma das formas de burlar seria fazendo uma comparação acrescentando
+    "’ OR ’1’=’1’"no campo da password e colocando algo aleatório no campo do
+    utilizador. Ao fazer isso a variável $sql em vez de armazenar "select * from
+    users WHERE user_name = ’$username’ and password = ’$password’"passaria
+    a armazenar "select * from users WHERE user_name = ’hacker’ and password
+    = ” OR ’1’ = ’1’". Assim, mesmo que nenhum dos valores faça parte do banco
+    de dados a variavel $sql dará um valor True por causa do OR que acrescentamos.
+  </p>
+  <center><h4 id="injection4"></h4></center>
+    <script>
+    var img = document.createElement("img");
+    img.src = "img/imagessql/Fig3.png";
+    img.style.height = "40%";
+    img.style.left = "0%";
+    img.style.position ="relative";
+    img.style.display = "inline-block";
+    img.style.height = "150px";
+    img.style.minHeight = "20%";
+    img.style.paddingTop = "1em";
+    img.style.paddingBottom = "1em";
+    img.style.paddingLeft = "1em";
+    img.style.paddingRight = "1em";
+    img.style.width = "auto";
+    var div = document.getElementById("injection4");
+    div.appendChild(img);
+    </script>
+    <script>
+    var img = document.createElement("img");
+    img.src = "img/imagessql/Fig4.png";
+    img.style.height = "40%";
+    img.style.left = "0%";
+    img.style.position ="relative";
+    img.style.display = "inline-block";
+    img.style.height = "120px";
+    img.style.minHeight = "20%";
+    img.style.paddingTop = "1em";
+    img.style.paddingBottom = "1em";
+    img.style.paddingLeft = "1em";
+    img.style.paddingRight = "1em";
+    img.style.width = "auto";
+    var div = document.getElementById("injection4");
+    div.appendChild(img);
+    </script>
+  <p id="minimazorcheckpoit2" class="fontebase">Mas... E se digitarmos outras instruções SQL? Seria possível acessar o banco
+    de dados? Para isso vamos usar uma ferramenta chamada SQLMap desenvolvida
+    em python com o propósito de facilitar a exploração desta vulnerabilidade.
+  </p>
+  <h3 id="minimazorcheckpoit2" class="subsubsubtitle">Segundo cenário - Acessar a base de dados</h3>
+  <p id="minimazorcheckpoit2" class="fontebase">No início deste capítulo dissemos que uma das consequências do SQLI é o acesso
+    direto a tudo o que está dentro de uma base de dados mas, para facilitar a
+    exploração desta vulnerabilidade vamos usar o SQLMap que vai nos ajudar no
+    processo.
+    O primeiro comando que digitamos para iniciar o ataque, python3 sqlmap.py
+    -u ’http://127.0.0.1/vuln.php?username=andre&password=p4ssw0rd’ –dbs, tem
+    como finalidade testar varias instruções SQL para depois extrair as bases de dados presentes no servidor. O parâmetro -u exige que seja colocada a URL entre
+    aspas junto com os parametros do servidor que são vulneráveis a SQLI (ou seja,
+    o parâmetro username e o parâmetro password) enquanto o parâmetro –dbs
+    exige que seja extraída o nome das bases de dados
+
+  </p>
+  <center><h4 id="injection6"></h4></center>
+    <script>
+    var img = document.createElement("img");
+    img.src = "img/imagessql/Fig5.png";
+    img.style.height = "40%";
+    img.style.left = "0%";
+    img.style.position ="relative";
+    img.style.display = "inline-block";
+    img.style.height = "350px";
+    img.style.minHeight = "20%";
+    img.style.paddingTop = "1em";
+    img.style.paddingBottom = "1em";
+    img.style.paddingLeft = "1em";
+    img.style.paddingRight = "1em";
+    img.style.width = "auto";
+    var div = document.getElementById("injection6");
+    div.appendChild(img);
+    </script>
+  <p id="minimazorcheckpoit2" class="fontebase">Como podemos ver o SQLMap encontrou quatro bases de dados. As três primeiras são bases de dados que fazem parte do MySQL, já a ultima é aquela que
+    vamos analisar mais a fundo para encontrar o usuário e a senha que precisamos.
+    Agora em vez de colocarmos –dbs no final, vamos substituir pelo parâmetro -D
+    onde iremos colocar o nome base de dados que queremos extrair e por ultimo
+    o parâmetro –dump que irá comunicar ao sqlmap para extrair tudo o que está
+    dentro da base de dados.
+  </p>
+  <center><h4 id="injection7"></h4></center>
+    <script>
+    var img = document.createElement("img");
+    img.src = "img/imagessql/Fig6.png";
+    img.style.height = "40%";
+    img.style.left = "0%";
+    img.style.position ="relative";
+    img.style.display = "inline-block";
+    img.style.height = "450px";
+    img.style.minHeight = "20%";
+    img.style.paddingTop = "1em";
+    img.style.paddingBottom = "1em";
+    img.style.paddingLeft = "1em";
+    img.style.paddingRight = "1em";
+    img.style.width = "auto";
+    var div = document.getElementById("injection7");
+    div.appendChild(img);
+    </script>
+  <p id="minimazorcheckpoit2" class="fontebase">O SQLMap encontrou dentro da base de dados uma tabela chamada "users",
+    duas colunas chamadas "user_name"e "password"e dentro delas estão o usuário
+    e a senha que procurávamos! Por último vamos testar se realmente estes são o
+    utilizador e a password que precisávamos.
+  </p>
+  <center><h4 id="injection8"></h4></center>
+    <script>
+    var img = document.createElement("img");
+    img.src = "img/imagessql/Fig7.png";
+    img.style.height = "40%";
+    img.style.left = "0%";
+    img.style.position ="relative";
+    img.style.display = "inline-block";
+    img.style.height = "150px";
+    img.style.minHeight = "20%";
+    img.style.paddingTop = "1em";
+    img.style.paddingBottom = "1em";
+    img.style.paddingLeft = "1em";
+    img.style.paddingRight = "1em";
+    img.style.width = "auto";
+    var div = document.getElementById("injection8");
+    div.appendChild(img);
+    </script>
+  <br>
+  <h2 id="minimazorcheckpoit2" class="subsubtitle">Como prevenir</h2>
+  <p id="minimazorcheckpoit2" class="fontebase">
+      Existem várias formas de prevenir o SQLI mas a mais comum seria filtrando os
+  caracteres digitados pelo utilizador. Uma das possíveis soluções seria criar um
+  array e depois filtrar as instruções SQL. Outra solução possível seria usar uma
+  das funções presentes no PHP para filtrar o que o utilizador digita, por exemplo
+  a mysqli_real _escape_string() que irá colocar "/"entre os caracteres especiais
+  usados nas instruções SQL. Para aplicar a função só temos que colocar dentro
+  dela a variável $conn e depois a variável que armazena o que o utilizador digitou
+  e assim resolvemos o problema.
+  </p>
+  <center><h4 id="injection9"></h4></center>
+    <script>
+    var img = document.createElement("img");
+    img.src = "img/imagessqlcode/sqlcode2.png";
+    img.style.height = "40%";
+    img.style.left = "0%";
+    img.style.position ="relative";
+    img.style.display = "inline-block";
+    img.style.height = "170px";
+    img.style.minHeight = "20%";
+    img.style.paddingTop = "1em";
+    img.style.paddingBottom = "1em";
+    img.style.paddingLeft = "1em";
+    img.style.paddingRight = "1em";
+    img.style.width = "auto";
+    var div = document.getElementById("injection9");
+    div.appendChild(img);
+    </script>
+    <script>
+      var img = document.createElement("img");
+      img.src = "img/imagessql/Fig8.png";
+      img.style.height = "40%";
+      img.style.left = "0%";
+      img.style.position ="relative";
+      img.style.display = "inline-block";
+      img.style.height = "170px";
+      img.style.minHeight = "20%";
+      img.style.paddingTop = "1em";
+      img.style.paddingBottom = "1em";
+      img.style.paddingLeft = "1em";
+      img.style.paddingRight = "1em";
+      img.style.width = "auto";
+      var div = document.getElementById("injection9");
+      div.appendChild(img);
+      </script>
+    <br>
+    <h1 id="minimazorcheckpoit2" class="subtitle">Cross-site Scripting</h1>
+    <h2 id="minimazorcheckpoit2" class="subsubtitle"> Descrição geral e consequências</h2>
+    <p id="minimazorcheckpoit2" class="fontebase">O XSS é uma vulnerabilidade que permite ao atacante injetar scripts em javascript ou até mesmo instruções em HTML ou XML de forma a tirar proveito dos
+      utilizadores. Esta vulnerabilidade consegue ser mais frequente do que o SQLI,
+      tendo sido encontrada por hackers portugueses nos sites da CIA, FBI, NASA e
+      no Departamento de Estado dos EUA. Existem três variantes de ataques XSS:
+      Reflected XSS, Stored XSS e o DOM XSS.
+      O Reflected XSS é um ataque em que se injeta o script diretamente na URL
+      e a página executa o que foi introduzido, mas este não fica armazenado no
+      servidor o que implica que o mesmo tenha que enviar a URL para as vítimas de
+      forma a obter proveito delas.
+      O Stored XSS é um ataque em que o script é injetado na página fazendo com
+      que qualquer um que entre na mesma fique comprometido pois, ao contrário do
+      anterior, este fica armazenado no servidor sendo o ataque XSS mais perigoso já
+      catalogado.
+      Por último o DOM XSS que é uma variante do Reflected XSS e por isso não
+      nos vamos estender sobre.
+    </p>
+    <br>
+    <h2 id="minimazorcheckpoit2" class="subsubtitle"> Código exemplo</h2>
+    <p id="minimazorcheckpoit2" class="fontebase">No index.php decidimos criar duas opções. Na primeira opção o utilizador
+      pode escrever alguma coisa que será exibida na vuln.php sem armazenar o que
+      foi digitado. Já na segunda opção o utilizador pode fazer um comentário que
+      será guardado num arquivo chamado comentario.html e depois será exibido em
+      vuln.php, lembrando que ambas as opções usam o método GET. Agora vamos
+      analisar uma parte do código do arquivo vuln.php:
+    </p>
+    <center><h4 id="injection11"></h4></center>
+      <script>
+      var img = document.createElement("img");
+      img.src = "img/imagessqlcode/sqlcode3.png";
+      img.style.height = "40%";
+      img.style.left = "0%";
+      img.style.position ="relative";
+      img.style.display = "inline-block";
+      img.style.height = "160px";
+      img.style.minHeight = "20%";
+      img.style.paddingTop = "1em";
+      img.style.paddingBottom = "1em";
+      img.style.paddingLeft = "0.5em";
+      img.style.paddingRight = "0.5em";
+      img.style.width = "auto";
+      var div = document.getElementById("injection11");
+      div.appendChild(img);
+      </script>
+      <script>
+      var img = document.createElement("img");
+      img.src = "img/imagessql/Fig9.png";
+      img.style.height = "40%";
+      img.style.left = "0%";
+      img.style.position ="relative";
+      img.style.display = "inline-block";
+      img.style.height = "160px";
+      img.style.minHeight = "20%";
+      img.style.paddingTop = "1em";
+      img.style.paddingBottom = "1em";
+      img.style.paddingLeft = "0.5em";
+      img.style.paddingRight = "0.5em";
+      img.style.width = "auto";
+      var div = document.getElementById("injection11");
+      div.appendChild(img);
+      </script>
+        <script>
+        var img = document.createElement("img");
+        img.src = "img/imagessql/Fig10.png";
+        img.style.height = "40%";
+        img.style.left = "0%";
+        img.style.position ="relative";
+        img.style.display = "inline-block";
+        img.style.height = "140px";
+        img.style.minHeight = "20%";
+        img.style.paddingTop = "1em";
+        img.style.paddingBottom = "1em";
+        img.style.paddingLeft = "0.5em";
+        img.style.paddingRight = "0.5em";
+        img.style.width = "auto";
+        var div = document.getElementById("injection11");
+        div.appendChild(img);
+        </script>
+    <br>
+    <h2 id="minimazorcheckpoit2" class="subsubtitle">Análise da sintaxe </h2>
+    <p id="minimazorcheckpoit2" class="fontebase">A variável $coisa armazena o que foi digitado na primeira opção e depois é
+      exibida quando o "if"é executado. Já a variável $postagem armazena o que foi
+      digitado na segunda opção e quando o "if"é executado a variável $arquivo abre
+      o comentario.html. Quando o arquivo é aberto o fwrite escreve uma linha com
+      o que está dentro da variável $postagem e coloca no início e no fim o < br > que
+      serve para mudar de linha. Quando a linha é adicionada o arquivo é fechado
+      através do comando fclose e depois é apresentado através do include.
+      Tal como no SQLI, a princípio não parece haver nada de errado com o código
+      mas o problema é que a informação não é filtrada e por isso se digitarmos
+      instruções em HTML ou em javascript estas serão executadas.
+    </p>
+    <br>
+    <h2 id="minimazorcheckpoit2" class="subsubtitle">Cenário de ataque </h2>
+    <h3 id="minimazorcheckpoit2" class="subsubsubtitle">Primeiro cenário - Reflected XSS</h3>
+    <p id="minimazorcheckpoit2" class="fontebase">Vamos imaginar que o atacante está há procura de uma vulnerabilidade XSS
+      no servidor e começa por testar a primeira opção. Para isso ele acrescenta uma
+      instrução em javascript no campo de texto, por exemplo &lt; script &gt; "alert" ("aqui existe xss") &lt;/ script &gt; .
+    </p>
+    <center><h4 id="injection14"></h4></center>
+      <script>
+      var img = document.createElement("img");
+      img.src = "img/imagessql/Fig11.png";
+      img.style.height = "40%";
+      img.style.left = "0%";
+      img.style.position ="relative";
+      img.style.display = "inline-block";
+      img.style.height = "200px";
+      img.style.minHeight = "20%";
+      img.style.paddingTop = "1em";
+      img.style.paddingBottom = "1em";
+      img.style.paddingLeft = "1em";
+      img.style.paddingRight = "1em";
+      img.style.width = "auto";
+      var div = document.getElementById("injection14");
+      div.appendChild(img);
+      </script>
+      <script>
+      var img = document.createElement("img");
+      img.src = "img/imagessql/Fig12.png";
+      img.style.height = "40%";
+      img.style.left = "0%";
+      img.style.position ="relative";
+      img.style.display = "inline-block";
+      img.style.height = "250px";
+      img.style.minHeight = "20%";
+      img.style.paddingTop = "1em";
+      img.style.paddingBottom = "1em";
+      img.style.paddingLeft = "1em";
+      img.style.paddingRight = "1em";
+      img.style.width = "auto";
+      var div = document.getElementById("injection14");
+      div.appendChild(img);
+      </script>
+    <p id="minimazorcheckpoit2" class="fontebase">  Como podemos ver, a instrução foi executada pelo sistema, o que significa que se enviarmos para alguém a URL com a instrução que colocamos a
+      mesma será executada. Agora pensem na quantidade de opções que um possível atacante pode pensar para extrair informações das vítimas através de um
+      site legitimo, sem contar que o servidor não tem como saber se o ataque foi feito
+      devido ao facto de não armazenar as informações digitadas.
+    </p>
+    <br>
+    <h3 id="minimazorcheckpoit2" class="subsubsubtitle">Segundo cenário - Stored XSS</h3>
+    <p id="minimazorcheckpoit2" class="fontebase">O atacante com o mesmo propósito que no cenário anterior em vez de testar
+      a primeira opção irá testar a segunda, mas usando a mesma instrução para
+      testar se é vulnerável a XSS. A diferença de um cenário para outro é que neste
+      a informação digitada fica armazenada no servidor o que faz com que qualquer
+      um que entre na página tenha o script executado no seu navegador.
+    </p>
+    <center><h4 id="injection16"></h4></center>
+      <script>
+      var img = document.createElement("img");
+      img.src = "img/imagessql/Fig13.png";
+      img.style.height = "40%";
+      img.style.left = "0%";
+      img.style.position ="relative";
+      img.style.display = "inline-block";
+      img.style.height = "200px";
+      img.style.minHeight = "20%";
+      img.style.paddingTop = "1em";
+      img.style.paddingBottom = "1em";
+      img.style.paddingLeft = "1em";
+      img.style.paddingRight = "1em";
+      img.style.width = "auto";
+      var div = document.getElementById("injection16");
+      div.appendChild(img);
+      </script>
+      <script>
+      var img = document.createElement("img");
+      img.src = "img/imagessql/Fig14.png";
+      img.style.height = "40%";
+      img.style.left = "0%";
+      img.style.position ="relative";
+      img.style.display = "inline-block";
+      img.style.height = "220px";
+      img.style.minHeight = "20%";
+      img.style.paddingTop = "1em";
+      img.style.paddingBottom = "1em";
+      img.style.paddingLeft = "1em";
+      img.style.paddingRight = "1em";
+      img.style.width = "auto";
+      var div = document.getElementById("injection16");
+      div.appendChild(img);
+      </script>
+      <script>
+      var img = document.createElement("img");
+      img.src = "img/imagessql/Fig15.png";
+      img.style.height = "40%";
+      img.style.left = "0%";
+      img.style.position ="relative";
+      img.style.display = "inline-block";
+      img.style.height = "220px";
+      img.style.minHeight = "20%";
+      img.style.paddingTop = "1em";
+      img.style.paddingBottom = "1em";
+      img.style.paddingLeft = "1em";
+      img.style.paddingRight = "1em";
+      img.style.width = "auto";
+      var div = document.getElementById("injection16");
+      div.appendChild(img);
+      </script>
+    <br>
+    <h2 id="minimazorcheckpoit2" class="subsubtitle"> Como prevenir </h2>
+    <p id="minimazorcheckpoit2" class="fontebase">os cenários de ataque que apresentamos, podemos concluir que esta vulnerabilidade afeta o servidor mas afeta mais quem o acessa. As soluções usadas para
+      corrigir o XSS são idênticas aos métodos usados para corrigir o SQLI. A mais
+      geral seria filtrar as instruções mas uma boa opção seria usar a função htmlspecialchars() que converte os caracteres em entidades HTML impossibilitando
+      assim a execução das instruções.
+    </p>
+    <center><h4 id="injection19"></h4></center>
+      <script>
+      var img = document.createElement("img");
+      img.src = "img/imagessqlcode/sqlcode4.png";
+      img.style.height = "40%";
+      img.style.left = "0%";
+      img.style.position ="relative";
+      img.style.display = "inline-block";
+      img.style.height = "160px";
+      img.style.minHeight = "20%";
+      img.style.paddingTop = "1em";
+      img.style.paddingBottom = "1em";
+      img.style.paddingLeft = "0.5em";
+      img.style.paddingRight = "0.5em";
+      img.style.width = "auto";
+      var div = document.getElementById("injection19");
+      div.appendChild(img);
+      </script>
+      <script>
+      var img = document.createElement("img");
+      img.src = "img/imagessql/Fig16.png";
+      img.style.height = "40%";
+      img.style.left = "0%";
+      img.style.position ="relative";
+      img.style.display = "inline-block";
+      img.style.height = "130px";
+      img.style.minHeight = "20%";
+      img.style.paddingTop = "1em";
+      img.style.paddingBottom = "1em";
+      img.style.paddingLeft = "0.5em";
+      img.style.paddingRight = "0.5em";
+      img.style.width = "auto";
+      var div = document.getElementById("injection19");
+      div.appendChild(img);
+      </script>
+      <script>
+      var img = document.createElement("img");
+      img.src = "img/imagessql/Fig17.png";
+      img.style.height = "40%";
+      img.style.left = "0%";
+      img.style.position ="relative";
+      img.style.display = "inline-block";
+      img.style.height = "130px";
+      img.style.minHeight = "20%";
+      img.style.paddingTop = "1em";
+      img.style.paddingBottom = "1em";
+      img.style.paddingLeft = "0.5em";
+      img.style.paddingRight = "0.5em";
+      img.style.width = "auto";
+      var div = document.getElementById("injection19");
+      div.appendChild(img);
+      </script>
+      <script>
+      var img = document.createElement("img");
+      img.src = "img/imagessql/Fig18.png";
+      img.style.height = "40%";
+      img.style.left = "0%";
+      img.style.position ="relative";
+      img.style.display = "inline-block";
+      img.style.height = "40px";
+      img.style.minHeight = "20%";
+      img.style.paddingTop = "1em";
+      img.style.paddingBottom = "1em";
+      img.style.paddingLeft = "0.5em";
+      img.style.paddingRight = "0.5em";
+      img.style.width = "auto";
+      var div = document.getElementById("injection19");
+      div.appendChild(img);
+      </script>
+    <br>
+    <h1 id="minimazorcheckpoit2" class="subtitle"> OS Command Injection</h1>
+    <h2 id="minimazorcheckpoit2" class="subsubtitle">Descrição geral e consequências</h2>
+    <p id="minimazorcheckpoit2" class="fontebase"> OS Command Injection é uma vulnerabilidade que permite ao atacante executar comandos no OS do servidor. Esta vulnerabilidade muito recorrente acontece
+      pela falta de verificação do que é introduzido, passando essa informação digitada para uma shell do OS. Podemos considerar esta vulnerabilidade como uma
+      das mais perigosas já catalogadas na história da cibersegurança porque quem
+      explora a mesma tem os seus comandos executados com as permissões da aplicação vulnerável em que na maioria dos casos o invasor pode ver o que está
+      dentro dos arquivos do servidor, editar os mesmos, fazer upload de arquivos,
+      executar backdoors, etc tornando-a assim numa das mais temidas.
+    </p>
+    <br>
+    <h2 id="minimazorcheckpoit2" class="subsubtitle">Código exemplo</h2>
+    <p id="minimazorcheckpoit2" class="fontebase">Para ilustrar a vulnerabilidade decidimos criar uma página chamada index.php
+      onde o utilizador pode colocar um site que depois de ser submetido será enviado
+      através do parâmetro server para outra pagina chamada ping.php que irá testar
+      se o servidor está no ar ou não, lembrando que nesta situação o parâmetro
+      "server"envia a informação através do método GET.
+    </p>
+    <center><h4 id="injection23"></h4></center>
+      <script>
+      var img = document.createElement("img");
+      img.src = "img/imagessqlcode/sqlicode5.png";
+      img.style.height = "40%";
+      img.style.left = "0%";
+      img.style.position ="relative";
+      img.style.display = "inline-block";
+      img.style.height = "130px";
+      img.style.minHeight = "20%";
+      img.style.paddingTop = "1em";
+      img.style.paddingBottom = "1em";
+      img.style.paddingLeft = "1em";
+      img.style.paddingRight = "1em";
+      img.style.width = "auto";
+      var div = document.getElementById("injection23");
+      div.appendChild(img);
+      </script>
+      <script>
+      var img = document.createElement("img");
+      img.src = "img/imagessql/Fig19.png";
+      img.style.height = "40%";
+      img.style.left = "0%";
+      img.style.position ="relative";
+      img.style.display = "inline-block";
+      img.style.height = "130px";
+      img.style.minHeight = "20%";
+      img.style.paddingTop = "1em";
+      img.style.paddingBottom = "1em";
+      img.style.paddingLeft = "1em";
+      img.style.paddingRight = "1em";
+      img.style.width = "auto";
+      var div = document.getElementById("injection23");
+      div.appendChild(img);
+      </script>
+      <script>
+      var img = document.createElement("img");
+      img.src = "img/imagessql/Fig20.png";
+      img.style.height = "40%";
+      img.style.left = "0%";
+      img.style.position ="relative";
+      img.style.display = "inline-block";
+      img.style.height = "130px";
+      img.style.minHeight = "20%";
+      img.style.paddingTop = "1em";
+      img.style.paddingBottom = "1em";
+      img.style.paddingLeft = "1em";
+      img.style.paddingRight = "1em";
+      img.style.width = "auto";
+      var div = document.getElementById("injection23");
+      div.appendChild(img);
+      </script>
+    <br>
+    <h2 id="minimazorcheckpoit2" class="subsubtitle">Análise da sintaxe</h2>
+    <p id="minimazorcheckpoit2" class="fontebase">A informação enviada através do parâmetro server será armazenada numa variável chamada $recebe. Quando o "if"é executado, as instruções echo escrevem
+      < pre > que tem como objetivo formatar o texto que está depois dela. Dentro
+      destas instruções existe outro echo que executa a função system() que tem como
+      objetivo executar o comando "ping -c 3 "junto com a variavél $recebe numa shell
+      do OS do servidor, verificando assim se o servidor digitado está no ar ou não.
+    </p>
+    <br>
+    <h2 id="minimazorcheckpoit2" class="subsubtitle"> Cenário de ataque</h2>
+    <p id="minimazorcheckpoit2" class="fontebase">Vamos supor que o atacante tem como objetivo enviar uma backdoor para dentro
+      do servidor e depois executa-la para ter acesso a tudo. Uma das formas de o
+      fazer seria digitando o site que se pretende ver se está no ar ou não, seguido de
+      "&&"para escrever outro comando a seguir e depois colocando o comando que
+      se pretende. Vamos supor que ele usa o comando wget para baixar a backdoor,
+      (back.php.txt), para dentro do servidor, (back.php), seguido do comando ls para
+      visualizar os arquivos que estão dentro da pasta.
+    </p>
+    <center><h4 id="injection26"></h4></center>
+      <script>
+      var img = document.createElement("img");
+      img.src = "img/imagessql/Fig21.png";
+      img.style.height = "40%";
+      img.style.left = "0%";
+      img.style.position ="relative";
+      img.style.display = "inline-block";
+      img.style.height = "130px";
+      img.style.minHeight = "20%";
+      img.style.paddingTop = "1em";
+      img.style.paddingBottom = "1em";
+      img.style.paddingLeft = "1em";
+      img.style.paddingRight = "1em";
+      img.style.width = "auto";
+      var div = document.getElementById("injection26");
+      div.appendChild(img);
+      </script>
+      <script>
+      var img = document.createElement("img");
+      img.src = "img/imagessql/Fig22.png";
+      img.style.height = "40%";
+      img.style.left = "0%";
+      img.style.position ="relative";
+      img.style.display = "inline-block";
+      img.style.height = "160px";
+      img.style.minHeight = "20%";
+      img.style.paddingTop = "1em";
+      img.style.paddingBottom = "1em";
+      img.style.paddingLeft = "1em";
+      img.style.paddingRight = "1em";
+      img.style.width = "auto";
+      var div = document.getElementById("injection26");
+      div.appendChild(img);
+      </script>
+    <p id="minimazorcheckpoit2" class="fontebase">
+          Como podemos ver a backdoor cujo nome é back.php foi enviada para o
+      servidor com sucesso! Agora vamos executar a backdoor usando o comando
+    "php back.php"para ver se conseguimos obter acesso ao servidor.
+    </p>
+    <center><h4 id="injection28"></h4></center>
+      <script>
+      var img = document.createElement("img");
+      img.src = "img/imagessql/Fig23.png";
+      img.style.height = "40%";
+      img.style.left = "0%";
+      img.style.position ="relative";
+      img.style.display = "inline-block";
+      img.style.height = "350px";
+      img.style.minHeight = "20%";
+      img.style.paddingTop = "1em";
+      img.style.paddingBottom = "1em";
+      img.style.paddingLeft = "1em";
+      img.style.paddingRight = "1em";
+      img.style.width = "auto";
+      var div = document.getElementById("injection28");
+      div.appendChild(img);
+      </script>
+    <p id="minimazorcheckpoit2" class="fontebase">Como podemos ver a backdoor foi executada com sucesso, depois de esta ser
+      executada ainda testamos os comandos ls, whoami e pwd que foram executados
+      sem quaisquer problemas. A conclusão que podemos tirar deste ataque é que
+      apenas com dois comandos nós conseguimos colocar uma backdoor e executa-la
+      o que comprova o quão perigosa é esta vulnerabilidade devido há liberdade que
+      dá ao atacante para ele fazer o que bem entende do servidor.
+    </p>
+    <br>
+    <h2 id="minimazorcheckpoit2" class="subsubtitle">  Como prevenir</h2>
+    <p id="minimazorcheckpoit2" class="fontebase">Existem algumas formas de corrigir esta vulnerabilidade, como por exemplo
+      filtrando os caracteres "", ";", etc mas este método não é perfeito pois existem
+      outros tipos de caracteres que podem ser usados e que podemos nos esquecer
+      de filtrar. O método mais recomendado seria evitar usar funções que executem
+      comandos no OS e substitui-las por outras funções que foram desenhadas para
+      fazer o que precisamos sem ter que executar comandos. Por exemplo neste
+      caso nós vamos usar uma função chamada gethostbyname() que irá converter o
+      servidor digitado em um ip caso o mesmo esteja no ar, caso não esteja no ar a
+      função não irá fazer essa conversão.
+    </p>
+    <center><h4 id="injection29"></h4></center>
+      <script>
+      var img = document.createElement("img");
+      img.src = "img/imagessqlcode/sqlicode6.png";
+      img.style.height = "40%";
+      img.style.left = "0%";
+      img.style.position ="relative";
+      img.style.display = "inline-block";
+      img.style.height = "170px";
+      img.style.minHeight = "20%";
+      img.style.paddingTop = "1em";
+      img.style.paddingBottom = "1em";
+      img.style.paddingLeft = "1em";
+      img.style.paddingRight = "1em";
+      img.style.width = "auto";
+      var div = document.getElementById("injection29");
+      div.appendChild(img);
+      </script>
+      <script>
+      var img = document.createElement("img");
+      img.src = "img/imagessql/Fig24.png";
+      img.style.height = "40%";
+      img.style.left = "0%";
+      img.style.position ="relative";
+      img.style.display = "inline-block";
+      img.style.height = "70px";
+      img.style.minHeight = "20%";
+      img.style.paddingTop = "1em";
+      img.style.paddingBottom = "1em";
+      img.style.paddingLeft = "1em";
+      img.style.paddingRight = "1em";
+      img.style.width = "auto";
+      var div = document.getElementById("injection29");
+      div.appendChild(img);
+      </script>
+      <script>
+      var img = document.createElement("img");
+      img.src = "img/imagessql/Fig25.png";
+      img.style.height = "40%";
+      img.style.left = "0%";
+      img.style.position ="relative";
+      img.style.display = "inline-block";
+      img.style.height = "70px";
+      img.style.minHeight = "20%";
+      img.style.paddingTop = "1em";
+      img.style.paddingBottom = "1em";
+      img.style.paddingLeft = "1em";
+      img.style.paddingRight = "1em";
+      img.style.width = "auto";
+      var div = document.getElementById("injection29");
+      div.appendChild(img);
+      </script>
+</div>
+</body>
+</html>

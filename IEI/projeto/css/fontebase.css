@@ -1,0 +1,89 @@
+.fontebase{
+    color: white;
+    display: block;
+    font-size: 20px;
+}
+p{
+  line-height: 25px;   /* within paragraph */
+   /* between paragraphs */
+  text-align: justify;
+  text-justify: inter-word;
+  animation:fadeIn 1s;
+  }
+@keyframes fadeIn{
+  0%{opacity:0;}
+  25%{opacity:0.25;}
+  50%{opacity:0.5;}
+  75%{opacity:0.75;}
+  100%{opacity:1;}
+  }
+
+
+.subtitle{
+    color: white;
+    display: block;
+    font-size: 30px;
+}
+p{
+  line-height: 25px;   /* within paragraph */
+   /* between paragraphs */
+  text-align: justify;
+  text-justify: inter-word;
+  animation:fadeIn 1s;
+  }
+@keyframes fadeIn{
+  0%{opacity:0;}
+  25%{opacity:0.25;}
+  50%{opacity:0.5;}
+  75%{opacity:0.75;}
+  100%{opacity:1;}
+  }
+
+
+.subsubtitle{
+    color: white;
+    display: block;
+    font-size: 25px;
+}
+p{
+  line-height: 25px;   /* within paragraph */
+   /* between paragraphs */
+  text-align: justify;
+  text-justify: inter-word;
+  animation:fadeIn 1s;
+  }
+@keyframes fadeIn{
+  0%{opacity:0;}
+  25%{opacity:0.25;}
+  50%{opacity:0.5;}
+  75%{opacity:0.75;}
+  100%{opacity:1;}
+  }
+
+  .subsubsubtitle{
+    color: white;
+    display: block;
+    font-size: 22px;
+    font-weight: 900;
+}
+p{
+  line-height: 25px;   /* within paragraph */
+   /* between paragraphs */
+  text-align: justify;
+  text-justify: inter-word;
+  animation:fadeIn 1s;
+  }
+@keyframes fadeIn{
+  0%{opacity:0;}
+  25%{opacity:0.25;}
+  50%{opacity:0.5;}
+  75%{opacity:0.75;}
+  100%{opacity:1;}
+  }
+  a {
+   color: white;
+   transition: all 250ms ease-out;
+   -webkit-transition: all 250ms ease-out;
+   -moz-transition: all 250ms ease-out;
+   -o-transition: all 250ms ease-out;
+ }

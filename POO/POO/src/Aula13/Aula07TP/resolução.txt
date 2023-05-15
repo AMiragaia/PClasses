@@ -1,0 +1,58 @@
+Numa classe abstrata podemos definir métodos sem corpo (sem código). Por exemplo:
+public abstract double area(); 
+em vez de: public double area() { /* corpo */ } 
+
+True
+
+Se Forma for uma classe abstrata podemos criar referências do tipo Forma.
+Por exemplo: Forma f1;
+True
+
+Se Forma for uma classe abstrata podemos criar objetos do tipo Forma.
+Por exemplo: Forma f1 = new Forma(); 
+Falso
+
+Se a classe Triângulo estender a classe abstrata Forma, Triângulo tem de implementar os métodos abstratos de Forma, ou, em alternativa, ser abstrata.
+True
+
+Uma classe pode herdar de várias classes e implementar uma ou mais interfaces.
+False
+
+Se Forma for uma interface podemos criar referências do tipo Forma.
+Por exemplo: Forma f1;
+True
+
+Se Forma for uma interface podemos criar objetos do tipo Forma.
+Por exemplo: Forma f1 = new Forma();
+False
+
+Para além da declaração de assinaturas, podemos escrever métodos dentro de uma interface (definidas com o atributo default)
+False
+
+class Bull extends Animal {...} True
+class Dog extends Animal implements Pet {...}True
+Animal fido = new Dog(); False
+Animal black = new Bull(); False
+
+black instanceof Animal
+True
+
+black instanceof Pet
+True
+
+fido instanceof Bull
+False
+
+fido instaceof Animal
+True
+
+fido instaceof Pet
+True
+
+Escreva a assinatura da função paintSomeCreature com um argumento único, de modo a que possa aceitar tanto um Bull como um Dog (entidades do problema anterior).
+public abstract void paintSomeCreature(Animal creature);
+
+
+
+
+

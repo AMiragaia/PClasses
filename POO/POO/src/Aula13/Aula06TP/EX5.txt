@@ -1,0 +1,15 @@
+Considere as classes Figura ,Rectangulo (extends Figura), Circulo (extends Figura), Alvo (extends Circulo). Indique quais das seguintes instruções são válidas:
+
+ 
+
+Figura f1 = new Circulo(/* parâmetros dos construtor */);          Válido
+
+Figura f2 = new Alvo(/* parâmetros dos construtor */);             Inválido
+
+f1= f2;                                                            Inválido
+
+Circulo c1 = new Figura(/* parâmetros dos construtor */);          Inválido
+
+Circulo c2 = new Alvo(/* parâmetros dos construtor */);            Válido
+
+Alvo a1 = new Circulo(/* parâmetros dos construtor */);            Inválido

@@ -1,0 +1,3 @@
+ex do fibonaci comparação do runtime
+ex command_line_arguments não sei o que é para fazer
+o que é que a puta do - faz

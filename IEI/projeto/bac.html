@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link type="text/css" rel="stylesheet" href="css/normalize.min.css">
+  <link type="text/css" rel="stylesheet" href="css/font-awesome.css">
+  <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="shortcut icon" type="image/x-icon" href="img/icon.ico">
+  <script src="js/prefixfree.min.js"></script>
+  <script src="js/menuEncolher1.js"></script>
+  <link type="text/css" rel="stylesheet" href="css/fontebase.css">
+  <style>
+  /*scrollbar*/
+  /*firefox*/
+html {
+  padding: 2rem;
+  scrollbar-width: thin;
+  scrollbar-color: #219F94 white;
+}
+  /*chrome*/
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #219F94;
+}
+
+</style>
+</head>
+<body>
+<div>
+  <h1 class="subtitle">Descrição Geral</h1>
+  <p class="fontebase">Esta é uma vulnerabilidade que tem vindo a crescer ao longo do tempo, em
+  2020 esteve na quinta posição na lista das 10 vulnerabilidades mais comuns,
+  feita pela OWASP tendo subido para a primeira posição em 2021 com uma
+  testagem equivalente a 94% das aplicações para alguma forma de "Broken Access
+  Control (BAC)"com uma taxa de incidência de 3,81%.
+  O Access Control faz com que os utilizadores não possam agir fora das permissões pretendidas, geralmente as falhas levam à divulgação, modificação ou
+  até mesmo destruição de informações não autorizadas de todos os dados, ou ao
+  desempenho de uma função comercial fora dos limites do utilizador.
+  </p>
+  <p id="minimazorcheckpoit1" class="fontebase">
+  As vulnerabilidades mais comuns de BAC incluem:<br>
+  <br>– Burlar a verificação de Access Control modificando a URL, o estado interno da aplicação, a página HTML ou usando uma ferramenta para fazer
+  ataques personalizados na API.<br>
+  <br>– Alterando a chave primária para a de outro utilizador podendo assim
+  visualizar ou fazer alterações na conta do mesmo.<br>
+  <br>– Elevação de privilégios podendo atuar com um utilizador sem estar logado
+  ou atuar como administrador estando logado como um utilizador padrão.<br>
+  <br>– Manipulação de metadados, adulterando ou reproduzindo um token de
+  controlo de acesso JSON Web Token (JWT), um cookie ou manipulando
+  um campo oculto para elevar privilégios, ou abusando da falta de validação
+  de JWT.<br>
+  <br>– Abusar da configuração incorreta do CORS permitindo assim acessos não
+  autorizados à API.<br>
+  <br>– Forçar a navegação para paginas autenticadas através de um utilizador
+  não autenticado ou para paginas privilegiadas através de um utilizador
+  padrão abusando da falta de verificação para os métodos POST, PUT e
+  DELETE.
+  </p>
+</div>
+  <br>
+<div>
+  <h1 id="minimazorcheckpoit1" class="subtitle">Falta de verificação da informação</h1>
+  <h2 id="minimazorcheckpoit1" class="subsubtitle">Descrição geral e consequências</h2>
+  <p id="minimazorcheckpoit1" class="fontebase">O fator mais comum que possibilita a existência de vulnerabilidades relacionadas a BAC é a falta de verificação, o que abre a porta para utilizadores não
+    autorizados terem acesso a informações sensíveis ou, em alguns casos, ter acesso
+    a páginas que não deveriam ter acesso sem cumprir determinados requisitos
+    como por exemplo acessar informações de outros utilizadores sem estar sequer
+    logado o que pode ser bastante perigoso visto que os utilizadores com as permissões mais elevadas normalmente conseguem fazer alterações bastante sensíveis
+    como alterar as páginas do servidor, criar páginas novas, entre outras coisas que
+    podem comprometer bastante a segurança de todos. Agora vamos expor como
+    a falta de verificação da informação pode ser bastante comprometedora.</p>
+    <br>
+  <h2 id="minimazorcheckpoit1" class="subsubtitle">Código exemplo</h2>
+  <p id="minimazorcheckpoit1" id="minimazorcheckpoit1" class="fontebase">Para ilustrar esta vulnerabilidade decidimos criar três arquivos, um chamado index.php, outro chamado conta.php e por ultimo um arquivo chamado robots.txt.
+    O index.php é uma pagina de login que quando um utilizador é logado, este é
+    redirecionado para a conta.php que irá exibir as informações desse utilizador.
+    Já o robots.txt é um arquivo que tem como finalidade comunicar aos motores
+    de busca (Google, Bing, etc) quais arquivos não queremos que sejam acessados,
+    ou seja, se alguém pesquisou no google o nosso website, para evitar que apareça
+    arquivos sensíveis nós colocamos no robots.txt os arquivos que não queremos
+    que sejam exibidos.
+  </p>
+  <center><h4 id="bac1"></h4></center>
+      <script>
+      var img = document.createElement("img");
+      img.src = "img/imagescodebac/baccode1.png";
+      img.style.left = "0%";
+      img.style.position ="relative";
+      img.style.display = "inline-block";
+      img.style.height = "300px";
+      img.style.minHeight = "20%";
+      img.style.paddingTop = "1em";
+      img.style.paddingBottom = "1em";
+      img.style.paddingLeft = "1em";
+      img.style.paddingRight = "1em";
+      img.style.width = "auto";
+      var div = document.getElementById("bac1");
+      div.appendChild(img);
+      </script>
+      <script>
+      var img = document.createElement("img");
+      img.src = "img/imagesbac/bac1.png";
+      img.style.left = "0%";
+      img.style.position ="relative";
+      img.style.display = "inline-block";
+      img.style.height = "200px";
+      img.style.minHeight = "20%";
+      img.style.paddingTop = "1em";
+      img.style.paddingBottom = "1em";
+      img.style.paddingLeft = "1em";
+      img.style.paddingRight = "1em";
+      img.style.width = "auto";
+      var div = document.getElementById("bac1");
+      div.appendChild(img);
+      </script>
+      <script>
+      var img = document.createElement("img");
+      img.src = "img/imagescodebac/baccode2.png";
+      img.style.position ="relative";
+      img.style.display = "inline-block";
+      img.style.height = "150px";
+      img.style.minHeight = "20%";
+      img.style.paddingTop = "1em";
+      img.style.paddingBottom = "1em";
+      img.style.paddingLeft = "1em";
+      img.style.paddingRight = "1em";
+      img.style.width = "auto";
+      var div = document.getElementById("bac1");
+      div.appendChild(img);
+      </script>
+      <script>
+      var img = document.createElement("img");
+      img.src = "img/imagesbac/bac2.png";
+      img.style.position ="relative";
+      img.style.display = "inline-block";
+      img.style.height = "150px";
+      img.style.minHeight = "20%";
+      img.style.paddingTop = "1em";
+      img.style.paddingBottom = "1em";
+      img.style.paddingLeft = "1em";
+      img.style.paddingRight = "1em";
+      img.style.width = "auto";
+      var div = document.getElementById("bac1");
+      div.appendChild(img);
+      </script>
+  <br>
+  <h2 id="minimazorcheckpoit1" class="subsubtitle">Análise da sintaxe</h2>
+  <p  id="minimazorcheckpoit1" class="fontebase">Vamos começar por analisar o index.php. A variável $conn vai criar uma conexão com a base de dados em que as variaveis $servername, $sql_username,
+    $sql_password e a $db_name armazenam, respetivamente, o ip do servidor
+    onde esta a base de dados, o utilizador, a password e o nome da base de dados.
+    Depois da variável $conn, o "if"vai tentar se conectar com o banco de dados.
+    Já as variáveis $username e $password vão receber o que o utilizador digitar.
+    A seguir temos a variável $sql que seleciona tudo o que está dentro da tabela
+    users e compara se a variável $username está dentro da coluna user_name e se
+    a $password está dentro da coluna password.
+    </p>
+    <p id="minimazorcheckpoit1" class="fontebase">  Logo depois temos a variável $result que vai executar a variável $sql, ou
+    seja, vai fazer uma consulta na base de dados e procurar as informações que
+    pedimos. A seguir temos um "if"que será executado quando o parâmetro "username"receber alguma coisa e logo a seguir será executado outro "if"caso o "número de linhas"recebidas pela variável $result seja maior que zero. Dentro desse
+    "if"temos um while que será executado enquanto todos valores extraídos da base
+    de dados não forem lidos, esses valores serão armazenados numa variável chamada $row. Por último temos a função header que vai redirecionar o utilizador
+    para o arquivo conta.php com o "id"associado há conta do utilizador.
+    Agora vamos analisar a conta.php. A variável $conn fará uma conexão com
+    a base de dados, já a variável $id vai armazenar o parâmetro "id"que foi enviado
+    pelo index.php e a variável $sql vai procurar o username e a descrição associados
+    ao "id"que depois será executado pela variável $result. Depois temos um "if"que
+    vai verificar se o "número de linhas"é maior que zero e dentro dele temos um
+    while que será executado enquanto todos os valores não forem lidos em que os
+    mesmos serão armazenados numa variável chamada $row.
+    </p>
+    <p id="minimazorcheckpoit1" class="fontebase">
+    Por último temos as instruções echo que vão exibir os dados extraídos da base de dados, ou seja, o respetivo username e a sua descrição.
+    O grande problema desta sintaxe é que as informações são passadas diretamente pela URL sem qualquer tipo de verificação o que faz com que qualquer
+    um possa modificar da forma que quer.
+    </p>
+  <br>
+  <h2 id="minimazorcheckpoit1" class="subsubtitle"> Cenários de ataque</h2>
+  <h3 id="minimazorcheckpoit1" class="subsubsubtitle">Primeiro cenário - Acessando outros utilizadores modificando o id da URL</h3>
+  <p id="minimazorcheckpoit1" class="fontebase">Neste cenário o atacante está logado numa conta chamada "andre"cujo "id"da
+    conta é "2", ao mudarmos o "id"para outro valor, por exemplo para o valor
+    "1", o que vai acontecer é que devido há falta de verificação o atacante consegue
+    mudar para outra conta. Ao mudar o id para "1"o mesmo consegue ter acesso
+    há conta "admin"que é a conta de administrador do website.
+  </p>
+  <center><h4 id="bac5"></h4></center>
+    <script>
+    var img = document.createElement("img");
+    img.src = "img/imagesbac/bac3.png";
+    img.style.position ="relative";
+    img.style.display = "inline-block";
+    img.style.height = "150px";
+    img.style.minHeight = "20%";
+    img.style.paddingTop = "1em";
+    img.style.paddingBottom = "1em";
+    img.style.paddingLeft = "1em";
+    img.style.paddingRight = "1em";
+    img.style.width = "auto";
+    var div = document.getElementById("bac5");
+    div.appendChild(img);
+    </script>
+  <h3 id="minimazorcheckpoit1" class="subsubsubtitle">Segundo cenário - Acessando outros utilizadores sem estar logado</h3>
+  <p id="minimazorcheckpoit1" class="fontebase">Neste cenário o atacante não tem nenhuma conta no servidor e por isso a primeira coisa que ele vai fazer é procurar informações para poder realizar o seu propósito.
+    Para isso ele vai entrar no arquivo robots.txt para procurar arquivos sensíveis. Ao entrar no robots.txt ele descobre que existe um arquivo chamado
+    conta.php mas ao entrar no mesmo se depara com uma página em branco visto que não há nenhum parâmetro. Para encontrar os parâmetros ele vai usar uma
+    ferramenta chamada Arjun programada em python que foi feita com esse propósito. Como podem ver o Arjun encontrou o parametro "id"e como o parâmetro
+    só recebe números inteiros ele vai testar o valor "1"que por padrão é o do administrador na maioria dos servidores.
+  </p>
+<center><h4 id="bac6"></h4></center>
+    <script>
+    var img = document.createElement("img");
+    img.src = "img/imagesbac/bac4.png";
+    img.style.position ="relative";
+    img.style.display = "inline-block";
+    img.style.height = "90px";
+    img.style.minHeight = "20%";
+    img.style.paddingTop = "1em";
+    img.style.paddingBottom = "1em";
+    img.style.paddingLeft = "0.5em";
+    img.style.paddingRight = "0.5em";
+    img.style.width = "auto";
+    var div = document.getElementById("bac6");
+    div.appendChild(img);
+    </script>
+      <script>
+      var img = document.createElement("img");
+      img.src = "img/imagesbac/bac5.png";
+      img.style.position ="relative";
+      img.style.display = "inline-block";
+      img.style.height = "150px";
+      img.style.minHeight = "20%";
+      img.style.paddingTop = "1em";
+      img.style.paddingBottom = "1em";
+      img.style.paddingLeft = "0.5em";
+      img.style.paddingRight = "0.5em";
+      img.style.width = "auto";
+      var div = document.getElementById("bac6");
+      div.appendChild(img);
+      </script>
+      <script>
+      var img = document.createElement("img");
+      img.src = "img/imagesbac/bac6.png";
+      img.style.position ="relative";
+      img.style.display = "inline-block";
+      img.style.height = "90px";
+      img.style.minHeight = "20%";
+      img.style.paddingTop = "1em";
+      img.style.paddingBottom = "1em";
+      img.style.paddingLeft = "0.5em";
+      img.style.paddingRight = "0.5em";
+      img.style.width = "auto";
+      var div = document.getElementById("bac6");
+      div.appendChild(img);
+      </script>
+    <br>
+    <h2 id="minimazorcheckpoit1" class="subsubtitle">Como prevenir</h2>
+    <p id="minimazorcheckpoit1" class="fontebase">
+      Nos cenários de ataque que apresentamos podemos concluir que este tipo de
+      vulnerabilidade pode muito bem ser evitado simplesmente enviando as informações de uma pagina para a outra e depois verificando se há alguma alteração
+      feita pelo utilizador no parâmetro "id".
+      Para fazer essa verificação vamos acrescentar uma função presente no php
+      chamada session_start() que tem como objetivo criar uma sessão onde serão
+      armazenados o username, a password e o id.
+      Quando logado este será redirecionado para conta.php mas se o mesmo tentar
+      mudar o id, o primeiro if que foi acrescentado fará com que seja redirecionado
+      para a index.php mas caso o mesmo tente acessar a conta.php sem estar logado o segundo "if"que foi acrescentado fará com que seja redirecionado para o
+      index.php e assim resolvemos o problema!
+    </p>
+    <center><h4 id="bac9"></h4></center>
+    <script>
+    var img = document.createElement("img");
+    img.src = "img/imagescodebac/baccode3.png";
+    img.style.position ="relative";
+    img.style.display = "inline-block";
+    img.style.height = "240px";
+    img.style.minHeight = "20%";
+    img.style.paddingTop = "1em";
+    img.style.paddingBottom = "1em";
+    img.style.paddingLeft = "1em";
+    img.style.paddingRight = "1em";
+    img.style.width = "auto";
+    var div = document.getElementById("bac9");
+    div.appendChild(img);
+    </script>
+    <script>
+    var img = document.createElement("img");
+    img.src = "img/imagescodebac/baccode4.png";
+    img.style.position ="relative";
+    img.style.display = "inline-block";
+    img.style.height = "160px";
+    img.style.minHeight = "20%";
+    img.style.paddingTop = "1em";
+    img.style.paddingBottom = "1em";
+    img.style.paddingLeft = "1em";
+    img.style.paddingRight = "1em";
+    img.style.width = "auto";
+    var div = document.getElementById("bac9");
+    div.appendChild(img);
+    </script>
+  <br>
+</div>
+  <div>
+      <h1 id="minimazorcheckpoit1" class="subtitle"> Local File Inclusion</h1>
+      <h2 id="minimazorcheckpoit1" class="subsubtitle">Descrição geral e consequências</h2>
+        <p class="fontebase">O Local File Inclusion (LFI) é uma vulnerabilidade que permite ao atacante ler
+          arquivos dentro do servidor sem a permissão do mesmo. Este tipo de vulnerabilidade pode parecer bastante inofenciva mas na realidade não é visto que o
+          atacante pode usar a mesma para ler arquivos importantes como o web.config, o
+          passwd, o id_rsa (SSH), arquivos de log, as páginas do servidor, etc sem contar
+          que em alguns casos é possível a execução de código malicioso mas, felizmente
+          este tipo de casos são bastante raros.
+        </p>
+      <h2 id="minimazorcheckpoit1" class="subsubtitle"> Código exemplo </h2>
+        <p id="minimazorcheckpoit1" class="fontebase">Para ilustrar a vulnerabilidade decidimos criar um arquivo chamado fic.php em
+          que o objetivo desta página é ler o index.php através do parâmetro "fic", usando
+          o método GET. <br>Por exemplo: http://127.0.0.1/bac/3/fic.php?fic=index.php
+        </p>
+        <center><h4 id="bac11"></h4></center>
+          <script>
+          var img = document.createElement("img");
+          img.src = "img/imagescodebac/baccode5.png";
+          img.style.position ="relative";
+          img.style.display = "inline-block";
+          img.style.height = "140px";
+          img.style.minHeight = "20%";
+          img.style.paddingTop = "1em";
+          img.style.paddingBottom = "1em";
+          img.style.paddingLeft = "1em";
+          img.style.paddingRight = "1em";
+          img.style.width = "auto";
+          var div = document.getElementById("bac11");
+          div.appendChild(img);
+          </script>
+          <script>
+          var img = document.createElement("img");
+          img.src = "img/lfi/lfi1.png";
+          img.style.position ="relative";
+          img.style.display = "inline-block";
+          img.style.height = "140px";
+          img.style.minHeight = "20%";
+          img.style.paddingTop = "1em";
+          img.style.paddingBottom = "1em";
+          img.style.paddingLeft = "1em";
+          img.style.paddingRight = "1em";
+          img.style.width = "auto";
+          var div = document.getElementById("bac11");
+          div.appendChild(img);
+          </script>
+        </p>
+        <br>
+        <h2 class="subsubtitle"> Análise da sintaxe </h2>
+        <p id="minimazorcheckpoit1" class="fontebase">
+          A variável $file vai armazenar o que está no parâmetro "fic"e depois será executado o "if". Quando o "if"é executado, caso exista o parâmetro "fic"este será
+          exibido na página, caso não exista a pagina irá exibir o index.php. Como já referimos antes, o problema deste tipo de vulnerabilidade é a falta de verificação
+          e por isso qualquer um pode alterar o parâmetro "fic"para ler outros arquivos
+          dentro do servidor.
+        </p>
+        <h2 class="subsubtitle"> Cenário de ataque - Invasão através do protocolo SSH </h2>
+        <p id="minimazorcheckpoit1" class="fontebase">Neste cenário o atacante tem como objetivo acessar o servidor através do protocolo SSH. Para isso, ele altera o parâmetro "fic", e coloca o diretório "/etc/passwd".
+          Como podemos ver existe um utilizador chamado "ghost". Agora o próximo
+          passo é alterar o parâmetro e colocar o diretorio "/home/ghost/.ssh/id_rsa"
+        </p>
+        <center><h4 id="lfi2"></h4></center>
+          <script>
+          var img = document.createElement("img");
+          img.src = "img/lfi/lfi2.png";
+          img.style.position ="relative";
+          img.style.display = "inline-block";
+          img.style.height = "200px";
+          img.style.minHeight = "20%";
+          img.style.paddingTop = "1em";
+          img.style.paddingBottom = "1em";
+          img.style.paddingLeft = "1em";
+          img.style.paddingRight = "1em";
+          img.style.width = "auto";
+          var div = document.getElementById("lfi2");
+          div.appendChild(img);
+          </script>
+        <p id="minimazorcheckpoit1" class="fontebase"> Agora que o atacante sabe qual é o id_rsa ele tem que simplesmente fazer um
+          ataque bruteforce para descriptografar o id_rsa e assim terá acesso ao servidor
+          através do protocolo SSH.
+        </p>
+        <center><h4 id="lfi3"></h4></center>
+          <script>
+          var img = document.createElement("img");
+          img.src = "img/lfi/lfi3.png";
+          img.style.position ="relative";
+          img.style.display = "inline-block";
+          img.style.height = "450px";
+          img.style.minHeight = "20%";
+          img.style.paddingTop = "1em";
+          img.style.paddingBottom = "1em";
+          img.style.paddingLeft = "1em";
+          img.style.paddingRight = "1em";
+          img.style.width = "auto";
+          var div = document.getElementById("lfi3");
+          div.appendChild(img);
+          </script>
+        <br>
+        <h2 id="minimazorcheckpoit1" class="subsubtitle"> Como prevenir </h2>
+        <p id="minimazorcheckpoit1" class="fontebase">A forma mais comum de corrigir o LFI é fazer uma lista de quais arquivos o
+          parâmetro "fic"pode ter acesso e dependendo do caso o melhor seria atribuir
+          um "id"a cada, para não exibir o nome ou o diretório. Alguns programadores
+          preferem armazenar a lista na base de dados, mas não é a única forma. Por
+          exemplo, neste caso a forma mais fácil e prática seria colocar no "if"quais arquivos podem ser lidos e, caso tentem acessar outros, será exibido o index.php
+          por padrão mas caso haja muitos arquivos o melhor seria armazenar numa base
+          de dados.
+        </p>
+        <center><h4 id="bac12"></h4></center>
+          <script>
+          var img = document.createElement("img");
+          img.src = "img/imagescodebac/baccode6.png";
+          img.style.position ="relative";
+          img.style.display = "inline-block";
+          img.style.height = "200px";
+          img.style.minHeight = "20%";
+          img.style.paddingTop = "1em";
+          img.style.paddingBottom = "1em";
+          img.style.paddingLeft = "1em";
+          img.style.paddingRight = "1em";
+          img.style.width = "auto";
+          var div = document.getElementById("bac12");
+          div.appendChild(img);
+          </script>
+</div>
+</body>
+</html>

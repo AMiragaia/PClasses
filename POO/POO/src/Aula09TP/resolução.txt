@@ -1,0 +1,13 @@
+1-False
+2-True
+3-True
+4-False
+5-False
+6-False
+7-False
+8-True
+9-True
+10-É necessário uma classe pessoa estar definida.Fazer um Hash map para armazenar os dados referentes a pessoa e depois pesquisar através das keys do hashmap o que for necessário.
+11-Map<Integer, ArrayList<Livro>> livros = new HashMap<>();
+12-Map<String, ArrayList<Pessoa>> Contactos = new HashMap<>();
+13-Map<Integer, ArrayList<String>> Alunos = new HashMap<>();

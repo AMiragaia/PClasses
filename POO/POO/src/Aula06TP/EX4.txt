@@ -1,0 +1,5 @@
+Represente os seguintes elementos (classes) bem como as suas relações (herança e composição): Livro, Artigo, Jornal, Publicação, Autor, Periódico, Editora, LivroEditado, Revista
+
+Class Revista, Periódico, Jornal, Livro, Artigo composição Publicação
+Autor herança Publicação
+LivroEditado Extends Livro

@@ -1,0 +1,16 @@
+Book{title=Turismo em Aveiro, pubYear=1980, isbn=null}
+Book{title=Javaland, pubYear=2019, isbn=1234-756}
+Book{title=Mau tempo na ria, pubYear=0, isbn=null}
+Book{title=Turismo em Aveiro, pubYear=1980, isbn=null}
+TURISMO EM AVEIRO
+9876-1234
+0: Turismo em Aveiro
+1: Javaland
+2: --- Posição vazia
+3: Turismo em Aveiro
+4: --- Posição vazia
+5: --- Posição vazia
+6: --- Posição vazia
+7: --- Posição vazia
+8: --- Posição vazia
+9: --- Posição vazia

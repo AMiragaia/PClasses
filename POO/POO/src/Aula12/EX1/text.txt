@@ -1,0 +1,2 @@
+When you design combinational logic, certain coding styles can create an unintentional latch. For example, when CASE or IF statements do not cover all possible input conditions, synthesis tools can infer latches to hold the output if a new output value is not assigned. Check your synthesis tool messages for references to inferred latches.
+If your code unintentionally creates a latch, modify your RTL to remove the latch:

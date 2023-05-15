@@ -1,0 +1,72 @@
+<html>
+    <head>
+    <style>
+        table, td, th {
+            border: 1px solid black;
+        }
+        #coldest {
+            background-color: yellow;
+        }
+        #quentinho {
+            background-color: aqua;        
+        }
+        .cold {
+            background-color: cyan;
+        }
+        .hot {
+            background-color: orange;
+        }
+        .button-ok {
+                border: none;
+                color: green;
+                padding: 16px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                transition-duration: 0.4s;
+                cursor: pointer;
+                background-color: black;
+        }
+        .button-cancel {
+                border: none;
+                color: orange;
+                padding: 16px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                transition-duration: 0.4s;
+                cursor: pointer;
+                background-color: cyan;
+        }
+        .tabelapar {
+            border: orange;
+            color: green;
+        }
+        .tabelaimpar {
+            border: yellow;
+            color: black;
+        }
+    </style>
+    </head>
+    <table>
+        <tr><th>Nome</th><th>2009</th><th>2010</th><th>2011</th><th>2012</th></tr>
+        <tr class="tabelaimpar"><td>Jan</td><td>14</td><td>13</td><td>11</td><td>9</td></tr>
+        <tr class="tabelapar"><td>Fev</td><td>15</td><td>14</td><td>14</td><td>11</td></tr>
+        <tr class="tabelaimpar"><td>Mar</td><td>17</td><td>17</td><td>15</td><td>16</td></tr>
+        <tr class="tabelapar"><td>Abr</td><td>18</td><td>17</td><td>13</td><td>18</td></tr>
+        <tr class="tabelaimpar"><td>Mai</td><td>19</td><td>18</td><td>16</td><td>21</td></tr>
+        <tr class="tabelapar"><td>Jun</td><td>21</td><td>22</td><td>20</td><td>16</td></tr>
+        <tr class="tabelaimpar"><td>Jul</td><td>23</td><td>21</td><td>22</td><td>18</td></tr>
+        <tr class="tabelapar"><td> Ago </td><td class="hot"> 24</td><td class="hot"> 23 </td><td id="quentinho"> 24 </td><td>23</td></tr>
+        <tr class="tabelaimpar"><td>Set</td><td>21</td><td>20</td><td>22</td><td>15</td></tr>
+        <tr class="tabelapar"><td>Out</td><td>18</td><td>16</td><td>19</td><td>11</td></tr>
+        <tr class="tabelaimpar"><td>Nov</td><td>15</td><td>14</td><td>14</td><td>10</td></tr>
+        <tr class="tabelapar"><td> Dez </td><td class="cold"> 13 </td><td class="cold"> 11 </td><td class="cold"> 12 </td><td id = "coldest"> 8 </td></tr>
+    </table>
+    <input class="button-ok" type="button" value="OK"/>
+    <input class="button-cancel" type="button" value="Cancelar"/>
+</html>

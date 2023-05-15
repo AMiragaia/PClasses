@@ -1,0 +1,2 @@
+Escreva a assinatura da função drawSomeFigure de modo a aceitar qualquer um dos tipos de dados da pergunta anterior .
+drawSomeFigure(Figura Figura)

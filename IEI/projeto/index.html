@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link type="text/css" rel="stylesheet" href="css/normalize.min.css">
+  <link type="text/css" rel="stylesheet" href="css/font-awesome.css">
+  <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css">
+  <link type="text/css" rel="stylesheet" href="css/hbp.css">
+  <link rel="shortcut icon" type="image/x-icon" href="img/icon.ico">
+  <script src="js/prefixfree.min.js"></script>
+  <script src="js/mover.js"></script>
+  <title>Vulnerabilidades Web</title>
+</head>
+<body>
+<div class="ct" id="t1">
+  <div class="ct" id="t2">
+    <div class="ct" id="t3">
+      <div class="ct" id="t4">
+         <div class="ct" id="t5">
+          <ul id="menu">
+            <a href="#t1" onclick="moverp1()"><li class="icon fa fa-power-off"></li></a>
+            <a href="#t2" onclick="moverp2()"><li class="icon fa fa-solid fa-unlock" id="doiss"></li></a>
+            <a href="#t3" onclick="moverp3()"><li class="icon fa fa-database" id="tress"></li></a>
+            <a href="#t4" onclick="moverp4()"><li class="icon fa fa-coffee" id="quatroo"></li></a>
+            <a href="#t5" onclick="moverp5()"><li class="icon fa fa-address-card" id="cincoo"></li></a>
+          </ul>
+          <div class="page" id="p1">
+             <section class="icon fa fa-power-off">
+               <br>
+               <span class="title">Introdução</span>
+               <span class="hint"><br><a href="#intro" onclick="moverp1()">Do que estás à espera? Clica aqui!</a></span>
+               <div id="intro"></div>
+             </section>
+          </div>
+          <div class="page" id="p2">
+            <section class="icon fa fa-solid fa-unlock" id="encolher11"><span class="title" id="encolher12">Broken Access Control</span>
+              <div id="bac"></div>
+              <script>
+              moverp2();
+              </script>
+            </section>
+          </div>
+          <div class="page" id="p3">
+            <section class="icon fa fa-database" id="encolher21"><span class="title" id="encolher22">Vulnerabilidades de Injeção</span>
+            <div id="injection"></div>
+            <script>
+            moverp3();
+            </script>
+          </section>
+          </div>
+          <div class="page" id="p4">
+            <section class="icon fa fa-coffee" id="encolher31">
+              <span class="title" id="encolher32">Testa por ti!</span>
+              <span class="hint" id="encolher32">Próximo semestre... :)</span>
+              <!--
+              <div id="test"></div>
+              <script>
+              moverp4();
+              </script>
+              -->
+            </section>
+          </div>
+          <div class="page" id="p5">
+            <section class="icon fa fa-address-card"  id="encolher41">
+              <span class="title"  id="encolher42">Acerca deste projeto</span>
+              <div id="about"></div>
+              <script>
+              moverp5();
+              </script>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="js/encolherMenuFuncao.js"></script>
+</body>
+</html>
