@@ -2,32 +2,16 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 def main():
-    #Questão 1
-    #Como variam as vendas mediante certas regiões?
+    Como a taxa de desemprego em Portugal mudou desde o início da pandemia de COVID-19?
 
+    Quais setores da economia foram mais afetados pelo desemprego durante a pandemia?
 
-    #Questão 2
-    #Como tem variado as receitas ao longo dos anos?
+    Como a distribuição do emprego por regiões em Portugal mudou durante a pandemia?
 
+    Qual foi a variação percentual no número de pessoas empregadas em Portugal durante a pandemia?
 
-    #Questão 3
-    #Que empresa tem revelado o maior crescimento relativamente às outras?
+    Como a pandemia afetou a taxa de emprego entre diferentes grupos etários em Portugal?
 
-
-
-
-
-    #Questão Extra
-    #Comparação com despesas de marketing
-    
-    
-    
-    
-    
-    
-    
-    
-    
     #Gráfico Geral
     # Carregue os dados do arquivo xlsx
     file_path = 'nike-adidas-puma-sales.xlsx'
