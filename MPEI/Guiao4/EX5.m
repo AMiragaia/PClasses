@@ -16,4 +16,4 @@ fprintf("A probabilidade de estar sol no segundo e no terceiro dia, ");
 sol = 1;
 nuvens = 2;
 chuva = 3;
-p_c = T(sol,sol)*T(sol,sol)+T(nuvens,sol)*T(sol,nuvens)+T(nuvens,sol)*T(nuvens,nuvens)+T(sol,sol)*T(nuvens,sol)
+p_c = T(sol,sol)*T(sol,sol)+T(nuvens,sol)*T(sol,nuvens)+T(nuvens,sol)*T(nuvens,nuvens)+T(sol,sol)*T(nuv
