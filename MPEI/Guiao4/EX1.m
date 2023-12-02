@@ -1,38 +1,33 @@
-%% a e b
+%%a
 
-pf = 0.8;
-pp = 0.7;
-n = 2;
+N = 1e5;
+alpha = ['a':'z' 'A':'Z'];
+keys = generateKeys(N,6, 20, alpha);
 
-x0 = [1 ; 0];
+%%b
+N = 1e5;
+alpha = 'a':'z';
+prob = load("prob_pt.txt");
+keys_prob = generateKeys(N,6, 20, alpha, prob);
 
-%estar presente 1, faltar 2
-T = [0.7 0.8; 0.3 0.2];
+%% function
+function keys = generateKeys(N, imin, imax, characters, probabilities)
+    if nargin < 5
+        probabilities = ones(1, length(characters)) / length(characters);
+    end
 
-res = T^n * x0;
+    keys = cell(1, N);
+    keyCount = 0;
 
-fprintf("%f esteve presente na quarta \n", res(1,:));
-fprintf("%f Nao esteve presente na quarta \n", res(2,:));
-
-%% c
-
-n = 15 * 2;
-
-x0 = [1 ; 0];
-
-%estar presente 1, faltar 2
-T = [0.7 0.8; 0.3 0.2];
-
-res = T^n * x0;
-
-fprintf("%f esteve presente na 1 aula e na ultima\n", res(1,:))
-
-%% d
-n = 30;
-x0 = [0.85 ; 0.15];
-T = [0.7 0.8; 0.3 0.2];
-res = x0;
-for i = 1 : n-1
-    res(:, i+1) = T^i * x0;
+    while keyCount < N
+        keyLength = randi([imin, imax]);
+        key = char(randsample(characters, keyLength, true, probabilities));
+        
+        % Verifica se a chave já existe
+        if ~any(strcmp(keys, key))
+            keyCount = keyCount + 1;
+            keys{keyCount} = key;
+        end
+    end
 end
-plot(1:1:30, res)
+
