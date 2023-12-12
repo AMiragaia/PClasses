@@ -1,4 +1,4 @@
-unction hash=string2hash(str,type)
+function hash=string2hash(str,type)
 % This function generates a hash value from a text string
 %
 % hash=string2hash(str,type);
