@@ -66,3 +66,21 @@ function pertence = verificarElemento(bloomFilter, elemento)
         end
     end
 end
+
+function keys = gerarChaves(N, imin, imax, caracteres)
+    % Esta função gera um conjunto de chaves únicas (palavras).
+    % N é o número de chaves a serem geradas.
+    % imin e imax definem o comprimento mínimo e máximo de cada chave.
+    % 'caracteres' é um vetor contendo os caracteres possíveis para as chaves.
+
+    keys = cell(1, N); % Inicializa o array de chaves
+
+    for i = 1:N
+        len = randi([imin, imax]); % Escolhe um comprimento aleatório
+        chave = caracteres(randi(numel(caracteres), 1, len));
+        while ismember(chave, keys)
+            chave = caracteres(randi(numel(caracteres), 1, len)); % Gera uma nova chave se já existir
+        end
+        keys{i} = chave; % Adiciona a chave única ao array
+    end
+end
