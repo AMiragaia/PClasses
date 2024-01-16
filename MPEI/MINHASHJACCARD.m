@@ -37,6 +37,7 @@ for n1=1:length(FraseMinHash)
         Distance(n1,n2) = 1-sum(isMatch)/length(isMatch);
     end
 end
+%A e B / A ou B
    %Shingling: Converta o documento (ou string) em um conjunto de shingles. No seu código, isso é feito pegando subsequências contínuas de caracteres de tamanho shinglesize.
 
    %Hashing: Aplique uma função de hash a cada shingle para obter um valor numérico. No seu código, isso é feito dentro do loop for ShingleN usando a função hf1.
