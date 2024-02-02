@@ -1,4 +1,4 @@
-clear all
+clear all;
 
 frase1 = 'Lisboa é Porto são duas cidades importantes de Portugal.';
 frase2 = 'Lisboa é a capital de Portugal.'; 

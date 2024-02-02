@@ -17,6 +17,7 @@ T5 = T^5;
 % a probabilidade de estar no estado 4 passado 5 transiçpes e de T5(4,2));
 
 % A probabilidade de estar no estado 2 passado 5 transições é de %f.\n\n', T5(2,2))
+probabilidade = T(2,2)^5;
 
 %para numero medio
 %obter Q (sub-matriz) que descreve probabilidades de transiçao de estados
