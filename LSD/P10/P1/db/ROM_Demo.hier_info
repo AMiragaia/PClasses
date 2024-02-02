@@ -1,0 +1,15 @@
+|ROM_16_8
+addr[0] => data[0].DATAIN
+addr[1] => data[1].DATAIN
+addr[2] => data[2].DATAIN
+addr[3] => data[3].DATAIN
+data[0] <= addr[0].DB_MAX_OUTPUT_PORT_TYPE
+data[1] <= addr[1].DB_MAX_OUTPUT_PORT_TYPE
+data[2] <= addr[2].DB_MAX_OUTPUT_PORT_TYPE
+data[3] <= addr[3].DB_MAX_OUTPUT_PORT_TYPE
+data[4] <= <GND>
+data[5] <= <GND>
+data[6] <= <GND>
+data[7] <= <GND>
+
+

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/criar-evento.css') }}" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Nunito Sans:wght@400;600;700;800;900&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap"
+    />
+  </head>
+  <body>
+    <div class="criar-evento">
+      <!--<form action="/criar_evento" method="POST" enctype="multipart/form-data">-->
+      <b class="titulo-do-evento">Adicionar novo Evento:</b>
+        <textarea class="insira-a-descrio" name="titulo" placeholder="Insira o título do evento"></textarea>
+      <b class="informaes2">Título do Evento:</b>
+      <textarea class="insira-a-descrio2" name="description" placeholder="Insira a descrição do evento que irá ficar exposta para os participantes."></textarea>
+      <b class="informaes3">Descrição do Evento:</b>
+      <div class="informaes1">Informações:</div>
+      <div class="text-input21">Preço:</div>
+      <div class="palestrantes">Palestrantes</div>
+      <div class="ser-enviado-um">
+        Será enviado um convite aos palestrantes assim que o evento for criado.
+        Os palestrantes só serão atribuídos ao evento assim que o convite for
+        aceito.
+      </div>
+      <div class="importante">Importante!</div>
+      <div class="button-row1">
+        <button class="button7" onclick="window.alert('Evento criado com sucesso!')">
+          <div class="label21" id="labelText">Criar Evento</div>
+        </button>
+        <button class="button8" onclick="location.href='/'">
+          <div class="label22">Cancelar</div>
+        </button>
+      </div>
+      <!--<input class="text-input16" type="text" />-->
+      
+      <!-- remover extra<input class="text-input18" type="text" />-->
+
+      <input class="text-input19" id="palestrante-input" type="text" name="palestrante" />
+  
+
+      <input class="text-input20" id="preco-input" type="text" name="preco" />
+
+      <button class="text-input21">
+        <button class="base-text-input4">
+          <div class="label23">Data de Início</div>
+        </button>
+        <div class="helper-text2">
+          <div class="helpertext2">MM/DD/YY</div>
+        </div>
+      </button>
+      <div class="desktop-full-signed-in2">
+        <div class="wordmark5">
+          <a href="/">
+          <b class="eventos5">
+            <span>Eventos</span>
+            <span class="span7">+</span>
+          </b></a>
+        </div>
+        <div class="nav-navigation-menu5">
+          <button class="button14">
+            <a href="/criar_evento">
+              <div class="label46">Criar Evento</div>
+            </a>
+          </button>
+          <div class="nav-list-item19">
+            <a href="/"><div class="name-of-section-container">Eventos</div>
+          </div></a>
+          <div class="dropdown">
+            <img class="user-icon" src="{{ url_for('static', filename='images/avatar-def.png') }}" alt="User Icon" onclick="toggleDropdown()">
+            <div id="dropdown-content" class="dropdown-content">
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+        <script>
+          function toggleDropdown() {
+        var dropdownContent = document.getElementById("dropdown-content");
+        if (dropdownContent.style.display === "none") {
+            dropdownContent.style.display = "block";
+        } else {
+            dropdownContent.style.display = "none";
+        }
+    }
+        </script>
+        <script>document.addEventListener('DOMContentLoaded', function() {
+          let checkbox = document.querySelector('#gratis');
+          let input = document.querySelector('.text-input20');
+      
+          checkbox.addEventListener('change', function() {
+              if (this.checked) {
+                  input.setAttribute('disabled', true);
+                  input.value = ''; // clear the input
+              } else {
+                  input.removeAttribute('disabled');
+              }
+          });
+      });
+      </script>
+        </div>
+      </div>
+      <div class="text-input22">
+          <div class="label23">Data do Fim</div>
+          <input type="date" name="end_date" />
+        <div class="helper-text2">
+          <div class="label25">MM/DD/YY</div>
+        </div>
+      </div>
+        <div class="base-text-input3 text-input23">
+          <div class="label23">Horário de Início</div>
+          <input type="time" name="start_time" />
+        </div>
+      <div class="deseja-adicionar-imagem">
+        Adicionar Imagem ao Evento
+      </div>
+      <input type="file" id="imageInput" accept="image/*" style="display: none;" />
+
+<button class="checkbox2 button8" onclick="document.getElementById('imageInput').click()">
+    <div class="label22">  Upload Local  </div>
+</button>
+
+<script>
+    document.getElementById('imageInput').addEventListener('change', function(event) {
+        var file = event.target.files[0];
+    });
+</script>
+
+      <button id="cant" class="checkbox4 button8" onclick="notifyUser()">
+        <div class="label22">  Upload Via Link  </div>
+      </button>
+    <script>
+        function notifyUser() {
+            alert('Upload via Link desligado devido à hospedagem online');
+        }
+    </script>
+      <div class="checkbox6">
+        <input class="checkbox3" type="checkbox" name="type" value="cultural" id="gratis" />
+        <div class="label25">Grátis</div>
+      </div>
+      <div class="checkbox8">
+        <input class="checkbox3" type="radio" name="type" value="cultural" id="cultural" />
+        <label class="label25" for="cultural">Evento Cultural</label>
+      </div>
+    
+      <div class="checkbox10">
+        <input class="checkbox3" type="radio" name="type" value="educational" id="educational" />
+        <label class="label25" for="educational">Evento Educacional</label>
+      </div>
+      <script>
+        const descArea = document.querySelector('.insira-a-descrio');
+        const originalPlaceholder = descArea.placeholder;
+      
+        descArea.addEventListener('focus', function() {
+          this.placeholder = '';
+        });
+      
+        descArea.addEventListener('blur', function() {
+          if(this.value == '')
+            this.placeholder = originalPlaceholder;
+        });
+      
+        const imageCheckbox = document.querySelector('#file');
+        imageCheckbox.addEventListener('change', function() {
+          if(this.checked)
+            alert('Disabled do to online hosting not allowing outside uploads!');
+        });
+      </script>
+      <!--</form>-->
+      <img class="footer-divider6" alt="" src="{{ url_for('static', filename='images/footer--divider.svg') }}" />
+      <img class="icon" alt="" src="{{ url_for('static', filename='images/6274-2@2x.png') }}" />
+      <div class="desktop-footer2">
+        <img
+          class="footer-divider7"
+          alt=""
+          src="{{ url_for('static', filename='images/footer--divider.svg') }}"
+        />
+
+        <div class="bottom7">
+          <div class="social-media-stack7">
+            <img class="twitter-icon7" alt="" src="{{ url_for('static', filename='images/24--twitter1.svg') }}" />
+
+            <img
+              class="twitter-icon7"
+              alt=""
+              src="{{ url_for('static', filename='images/24--instagram.svg') }}"
+            />
+
+            <img class="twitter-icon7" alt="" src="{{ url_for('static', filename='images/24--facebook.svg') }}" />
+          </div>
+          <div class="callouts-are-used">© 2023 Eventos+</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

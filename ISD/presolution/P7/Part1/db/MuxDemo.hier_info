@@ -1,0 +1,128 @@
+|fun16_1
+y <= mux16_1_e:inst.y
+S[0] => mux16_1_e:inst.S[0]
+S[1] => mux16_1_e:inst.S[1]
+S[2] => mux16_1_e:inst.S[2]
+S[3] => mux16_1_e:inst.S[3]
+
+
+|fun16_1|mux16_1_e:inst
+y <= 74157:inst4.Y2
+S[0] => 74157:inst.SEL
+S[0] => 74157:inst1.SEL
+S[1] => 74157:inst2.SEL
+S[2] => 74157:inst3.SEL
+S[3] => 74157:inst4.SEL
+x0 => 74157:inst.A1
+x1 => 74157:inst.B1
+x3 => 74157:inst.B2
+x4 => 74157:inst.A3
+x5 => 74157:inst.B3
+x2 => 74157:inst.A2
+x7 => 74157:inst.B4
+x6 => 74157:inst.A4
+x8 => 74157:inst1.A1
+x9 => 74157:inst1.B1
+x11 => 74157:inst1.B2
+x12 => 74157:inst1.A3
+x13 => 74157:inst1.B3
+x10 => 74157:inst1.A2
+x15 => 74157:inst1.B4
+x14 => 74157:inst1.A4
+
+
+|fun16_1|mux16_1_e:inst|74157:inst4
+Y4 <= 25.DB_MAX_OUTPUT_PORT_TYPE
+A4 => 20.IN0
+GN => 12.IN0
+GN => 13.IN0
+SEL => 12.IN1
+SEL => 1.IN0
+B4 => 21.IN0
+Y3 <= 24.DB_MAX_OUTPUT_PORT_TYPE
+A3 => 18.IN0
+B3 => 19.IN0
+Y2 <= 23.DB_MAX_OUTPUT_PORT_TYPE
+A2 => 16.IN0
+B2 => 17.IN0
+Y1 <= 22.DB_MAX_OUTPUT_PORT_TYPE
+A1 => 14.IN0
+B1 => 15.IN0
+
+
+|fun16_1|mux16_1_e:inst|74157:inst3
+Y4 <= 25.DB_MAX_OUTPUT_PORT_TYPE
+A4 => 20.IN0
+GN => 12.IN0
+GN => 13.IN0
+SEL => 12.IN1
+SEL => 1.IN0
+B4 => 21.IN0
+Y3 <= 24.DB_MAX_OUTPUT_PORT_TYPE
+A3 => 18.IN0
+B3 => 19.IN0
+Y2 <= 23.DB_MAX_OUTPUT_PORT_TYPE
+A2 => 16.IN0
+B2 => 17.IN0
+Y1 <= 22.DB_MAX_OUTPUT_PORT_TYPE
+A1 => 14.IN0
+B1 => 15.IN0
+
+
+|fun16_1|mux16_1_e:inst|74157:inst2
+Y4 <= 25.DB_MAX_OUTPUT_PORT_TYPE
+A4 => 20.IN0
+GN => 12.IN0
+GN => 13.IN0
+SEL => 12.IN1
+SEL => 1.IN0
+B4 => 21.IN0
+Y3 <= 24.DB_MAX_OUTPUT_PORT_TYPE
+A3 => 18.IN0
+B3 => 19.IN0
+Y2 <= 23.DB_MAX_OUTPUT_PORT_TYPE
+A2 => 16.IN0
+B2 => 17.IN0
+Y1 <= 22.DB_MAX_OUTPUT_PORT_TYPE
+A1 => 14.IN0
+B1 => 15.IN0
+
+
+|fun16_1|mux16_1_e:inst|74157:inst
+Y4 <= 25.DB_MAX_OUTPUT_PORT_TYPE
+A4 => 20.IN0
+GN => 12.IN0
+GN => 13.IN0
+SEL => 12.IN1
+SEL => 1.IN0
+B4 => 21.IN0
+Y3 <= 24.DB_MAX_OUTPUT_PORT_TYPE
+A3 => 18.IN0
+B3 => 19.IN0
+Y2 <= 23.DB_MAX_OUTPUT_PORT_TYPE
+A2 => 16.IN0
+B2 => 17.IN0
+Y1 <= 22.DB_MAX_OUTPUT_PORT_TYPE
+A1 => 14.IN0
+B1 => 15.IN0
+
+
+|fun16_1|mux16_1_e:inst|74157:inst1
+Y4 <= 25.DB_MAX_OUTPUT_PORT_TYPE
+A4 => 20.IN0
+GN => 12.IN0
+GN => 13.IN0
+SEL => 12.IN1
+SEL => 1.IN0
+B4 => 21.IN0
+Y3 <= 24.DB_MAX_OUTPUT_PORT_TYPE
+A3 => 18.IN0
+B3 => 19.IN0
+Y2 <= 23.DB_MAX_OUTPUT_PORT_TYPE
+A2 => 16.IN0
+B2 => 17.IN0
+Y1 <= 22.DB_MAX_OUTPUT_PORT_TYPE
+A1 => 14.IN0
+B1 => 15.IN0
+
+

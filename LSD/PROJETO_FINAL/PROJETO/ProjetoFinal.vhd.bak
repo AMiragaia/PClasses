@@ -1,0 +1,224 @@
+-- Copyright (C) 2020  Intel Corporation. All rights reserved.
+-- Your use of Intel Corporation's design tools, logic functions 
+-- and other software and tools, and any partner logic 
+-- functions, and any output files from any of the foregoing 
+-- (including device programming or simulation files), and any 
+-- associated documentation or information are expressly subject 
+-- to the terms and conditions of the Intel Program License 
+-- Subscription Agreement, the Intel Quartus Prime License Agreement,
+-- the Intel FPGA IP License Agreement, or other applicable license
+-- agreement, including, without limitation, that your use is for
+-- the sole purpose of programming logic devices manufactured by
+-- Intel and sold by Intel or its authorized distributors.  Please
+-- refer to the applicable agreement for further details, at
+-- https://fpgasoftware.intel.com/eula.
+
+-- PROGRAM		"Quartus Prime"
+-- VERSION		"Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition"
+-- CREATED		"Fri Jun 17 14:14:24 2022"
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.all; 
+
+LIBRARY work;
+
+ENTITY ProjetoFinal IS 
+	PORT
+	(
+		CLOCK_50 :  IN  STD_LOGIC;
+		KEY2 :  IN  STD_LOGIC;
+		KEY1 :  IN  STD_LOGIC;
+		KEY0 :  IN  STD_LOGIC;
+		SW :  IN  STD_LOGIC_VECTOR(0 TO 0);
+		HEX0 :  OUT  STD_LOGIC_VECTOR(6 DOWNTO 0);
+		HEX1 :  OUT  STD_LOGIC_VECTOR(6 DOWNTO 0);
+		HEX2 :  OUT  STD_LOGIC_VECTOR(6 DOWNTO 0);
+		HEX3 :  OUT  STD_LOGIC_VECTOR(6 DOWNTO 0);
+		HEX4 :  OUT  STD_LOGIC_VECTOR(6 DOWNTO 0);
+		HEX5 :  OUT  STD_LOGIC_VECTOR(6 DOWNTO 0);
+		HEX6 :  OUT  STD_LOGIC_VECTOR(6 DOWNTO 0);
+		HEX7 :  OUT  STD_LOGIC_VECTOR(6 DOWNTO 0)
+	);
+END ProjetoFinal;
+
+ARCHITECTURE bdf_type OF ProjetoFinal IS 
+
+COMPONENT addresscounter
+	PORT(reset : IN STD_LOGIC;
+		 clk : IN STD_LOGIC;
+		 enable : IN STD_LOGIC;
+		 cntOut : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+	);
+END COMPONENT;
+
+COMPONENT bcddisplay
+	PORT(rom_out : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+		 led_out1 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
+		 led_out2 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
+		 led_out3 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
+		 led_out4 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)
+	);
+END COMPONENT;
+
+COMPONENT timer
+GENERIC (N : INTEGER
+			);
+	PORT(clk : IN STD_LOGIC;
+		 reset : IN STD_LOGIC;
+		 start : IN STD_LOGIC;
+		 timerOut : OUT STD_LOGIC
+	);
+END COMPONENT;
+
+COMPONENT noisytriangsignal_rom_256x8
+	PORT(address : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+		 dataOut : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+	);
+END COMPONENT;
+
+COMPONENT registerdecoder
+	PORT(clk : IN STD_LOGIC;
+		 en : IN STD_LOGIC;
+		 WE : OUT STD_LOGIC
+	);
+END COMPONENT;
+
+COMPONENT geradordepulso2hz
+GENERIC (MAX : INTEGER
+			);
+	PORT(clk : IN STD_LOGIC;
+		 reset : IN STD_LOGIC;
+		 pulso : OUT STD_LOGIC
+	);
+END COMPONENT;
+
+COMPONENT aritmeticunit
+	PORT(filter_on : IN STD_LOGIC;
+		 operand1 : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+		 operand2 : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+		 operand3 : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+		 operand4 : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+		 Result : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+	);
+END COMPONENT;
+
+COMPONENT ram_256x8
+	PORT(clk : IN STD_LOGIC;
+		 rst_ram : IN STD_LOGIC;
+		 writeEnable : IN STD_LOGIC;
+		 reset : IN STD_LOGIC;
+		 address : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+		 writeData : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+		 DataOut : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+	);
+END COMPONENT;
+
+COMPONENT registerbank
+	PORT(Reset : IN STD_LOGIC;
+		 WE : IN STD_LOGIC;
+		 WriteData : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+		 DataOut1 : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+		 DataOut2 : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+		 DataOut3 : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+		 DataOut4 : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+	);
+END COMPONENT;
+
+SIGNAL	SYNTHESIZED_WIRE_14 :  STD_LOGIC;
+SIGNAL	SYNTHESIZED_WIRE_15 :  STD_LOGIC_VECTOR(7 DOWNTO 0);
+SIGNAL	SYNTHESIZED_WIRE_16 :  STD_LOGIC_VECTOR(7 DOWNTO 0);
+SIGNAL	SYNTHESIZED_WIRE_4 :  STD_LOGIC_VECTOR(7 DOWNTO 0);
+SIGNAL	SYNTHESIZED_WIRE_5 :  STD_LOGIC_VECTOR(7 DOWNTO 0);
+SIGNAL	SYNTHESIZED_WIRE_6 :  STD_LOGIC_VECTOR(7 DOWNTO 0);
+SIGNAL	SYNTHESIZED_WIRE_7 :  STD_LOGIC_VECTOR(7 DOWNTO 0);
+SIGNAL	SYNTHESIZED_WIRE_8 :  STD_LOGIC_VECTOR(7 DOWNTO 0);
+SIGNAL	SYNTHESIZED_WIRE_9 :  STD_LOGIC;
+SIGNAL	SYNTHESIZED_WIRE_11 :  STD_LOGIC_VECTOR(7 DOWNTO 0);
+SIGNAL	SYNTHESIZED_WIRE_12 :  STD_LOGIC;
+
+
+BEGIN 
+
+
+
+b2v_inst : addresscounter
+PORT MAP(reset => KEY2,
+		 clk => CLOCK_50,
+		 enable => SYNTHESIZED_WIRE_14,
+		 cntOut => SYNTHESIZED_WIRE_16);
+
+
+b2v_inst1 : bcddisplay
+PORT MAP(rom_out => SYNTHESIZED_WIRE_15,
+		 led_out1 => HEX0,
+		 led_out2 => HEX1,
+		 led_out3 => HEX2,
+		 led_out4 => HEX3);
+
+
+b2v_inst15 : timer
+GENERIC MAP(N => 2
+			)
+PORT MAP(clk => CLOCK_50,
+		 reset => KEY2,
+		 start => KEY0,
+		 timerOut => SYNTHESIZED_WIRE_9);
+
+
+b2v_inst2 : noisytriangsignal_rom_256x8
+PORT MAP(address => SYNTHESIZED_WIRE_16,
+		 dataOut => SYNTHESIZED_WIRE_15);
+
+
+b2v_inst20 : registerdecoder
+PORT MAP(clk => CLOCK_50,
+		 en => SYNTHESIZED_WIRE_14,
+		 WE => SYNTHESIZED_WIRE_12);
+
+
+b2v_inst5 : geradordepulso2hz
+GENERIC MAP(MAX => 25000000
+			)
+PORT MAP(clk => CLOCK_50,
+		 reset => KEY2,
+		 pulso => SYNTHESIZED_WIRE_14);
+
+
+b2v_inst50 : aritmeticunit
+PORT MAP(filter_on => SW(0),
+		 operand1 => SYNTHESIZED_WIRE_4,
+		 operand2 => SYNTHESIZED_WIRE_5,
+		 operand3 => SYNTHESIZED_WIRE_6,
+		 operand4 => SYNTHESIZED_WIRE_7,
+		 Result => SYNTHESIZED_WIRE_11);
+
+
+b2v_inst6 : bcddisplay
+PORT MAP(rom_out => SYNTHESIZED_WIRE_8,
+		 led_out1 => HEX4,
+		 led_out2 => HEX5,
+		 led_out3 => HEX6,
+		 led_out4 => HEX7);
+
+
+b2v_inst7 : ram_256x8
+PORT MAP(clk => CLOCK_50,
+		 rst_ram => KEY1,
+		 writeEnable => SYNTHESIZED_WIRE_9,
+		 reset => KEY2,
+		 address => SYNTHESIZED_WIRE_16,
+		 writeData => SYNTHESIZED_WIRE_11,
+		 DataOut => SYNTHESIZED_WIRE_8);
+
+
+b2v_inst90 : registerbank
+PORT MAP(Reset => KEY2,
+		 WE => SYNTHESIZED_WIRE_12,
+		 WriteData => SYNTHESIZED_WIRE_15,
+		 DataOut1 => SYNTHESIZED_WIRE_4,
+		 DataOut2 => SYNTHESIZED_WIRE_5,
+		 DataOut3 => SYNTHESIZED_WIRE_6,
+		 DataOut4 => SYNTHESIZED_WIRE_7);
+
+
+END bdf_type;

@@ -1,0 +1,26 @@
+<annotation>
+	<folder>images_test</folder>
+	<filename>IMG_2958.png</filename>
+	<path>D:\ROKBOT\Calculadora\images_test\IMG_2958.png</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>2532</width>
+		<height>1170</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>inventory_test</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>477</xmin>
+			<ymin>202</ymin>
+			<xmax>1533</xmax>
+			<ymax>1090</ymax>
+		</bndbox>
+	</object>
+</annotation>

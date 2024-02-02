@@ -1,0 +1,11 @@
+vendor_name = ModelSim
+source_file = 1, C:/Faculdade/ISD/presolution/P8/FullAdder.bdf
+source_file = 1, C:/Faculdade/ISD/presolution/P8/db/AddSubDemo.cbx.xml
+design_name = FullAdder
+instance = comp, \S~output , S~output, FullAdder, 1
+instance = comp, \cout~output , cout~output, FullAdder, 1
+instance = comp, \a~input , a~input, FullAdder, 1
+instance = comp, \b~input , b~input, FullAdder, 1
+instance = comp, \cin~input , cin~input, FullAdder, 1
+instance = comp, \inst1~0 , inst1~0, FullAdder, 1
+instance = comp, \inst6~0 , inst6~0, FullAdder, 1

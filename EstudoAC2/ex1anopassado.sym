@@ -1,0 +1,17 @@
+GAS LISTING ex1anopassado.s 			page 1
+
+
+DEFINED SYMBOLS
+     ex1anopassado.s:8      *ABS*:000000000000bf88 SFR_BASE_HI
+     ex1anopassado.s:9      *ABS*:0000000000006040 TRISB
+     ex1anopassado.s:10     *ABS*:0000000000006050 PORTB
+     ex1anopassado.s:11     *ABS*:0000000000006060 LATB
+     ex1anopassado.s:12     *ABS*:0000000000006100 TRISE
+     ex1anopassado.s:13     *ABS*:0000000000006110 PORTE
+     ex1anopassado.s:14     *ABS*:0000000000006120 LATE
+     ex1anopassado.s:18     .text:0000000000000000 main
+     ex1anopassado.s:29     .text:0000000000000024 loop
+     ex1anopassado.s:58     .text:0000000000000084 delay
+     ex1anopassado.s:63     .text:00000000000000a0 read
+
+NO UNDEFINED SYMBOLS

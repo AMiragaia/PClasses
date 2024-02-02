@@ -1,0 +1,26 @@
+<annotation>
+	<folder>Calculadora</folder>
+	<filename>IMG_8792.png</filename>
+	<path>D:\ROKBOT\Calculadora\IMG_8792.png</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1792</width>
+		<height>828</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>inventory</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>365</xmin>
+			<ymin>148</ymin>
+			<xmax>1073</xmax>
+			<ymax>771</ymax>
+		</bndbox>
+	</object>
+</annotation>

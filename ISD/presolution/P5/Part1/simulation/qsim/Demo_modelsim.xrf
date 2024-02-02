@@ -1,0 +1,8 @@
+vendor_name = ModelSim
+source_file = 1, C:/Faculdade/ISD/presolution/P5/Part1/GateDemo.bdf
+source_file = 1, C:/Faculdade/ISD/presolution/P5/Part1/GateDemo.vwf
+source_file = 1, C:/Faculdade/ISD/presolution/P5/Part1/db/Demo.cbx.xml
+design_name = GateDemo
+instance = comp, \outPort~output , outPort~output, GateDemo, 1
+instance = comp, \InPort0~input , InPort0~input, GateDemo, 1
+instance = comp, \InPort1~input , InPort1~input, GateDemo, 1

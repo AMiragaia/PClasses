@@ -1,0 +1,26 @@
+<annotation>
+	<folder>Downloads</folder>
+	<filename>IMG_4577.png</filename>
+	<path>C:\Users\andre\Downloads\IMG_4577.png</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>2778</width>
+		<height>1284</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>inventory</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>551</xmin>
+			<ymin>235</ymin>
+			<xmax>1714</xmax>
+			<ymax>1198</ymax>
+		</bndbox>
+	</object>
+</annotation>

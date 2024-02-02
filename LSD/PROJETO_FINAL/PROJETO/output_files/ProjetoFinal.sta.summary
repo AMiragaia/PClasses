@@ -1,0 +1,77 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'CLOCK_50'
+Slack : -8.623
+TNS   : -15157.708
+
+Type  : Slow 1200mV 85C Model Setup 'RegisterDecoder:registerdecoder|WE'
+Slack : -4.828
+TNS   : -39.233
+
+Type  : Slow 1200mV 85C Model Hold 'RegisterDecoder:registerdecoder|WE'
+Slack : 0.557
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'CLOCK_50'
+Slack : 0.639
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -3.000
+TNS   : -2732.340
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'RegisterDecoder:registerdecoder|WE'
+Slack : -1.285
+TNS   : -41.120
+
+Type  : Slow 1200mV 0C Model Setup 'CLOCK_50'
+Slack : -7.798
+TNS   : -13644.365
+
+Type  : Slow 1200mV 0C Model Setup 'RegisterDecoder:registerdecoder|WE'
+Slack : -4.344
+TNS   : -33.417
+
+Type  : Slow 1200mV 0C Model Hold 'RegisterDecoder:registerdecoder|WE'
+Slack : 0.519
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'CLOCK_50'
+Slack : 0.584
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -3.000
+TNS   : -2732.340
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'RegisterDecoder:registerdecoder|WE'
+Slack : -1.285
+TNS   : -41.120
+
+Type  : Fast 1200mV 0C Model Setup 'CLOCK_50'
+Slack : -3.779
+TNS   : -6479.480
+
+Type  : Fast 1200mV 0C Model Setup 'RegisterDecoder:registerdecoder|WE'
+Slack : -2.051
+TNS   : -14.526
+
+Type  : Fast 1200mV 0C Model Hold 'RegisterDecoder:registerdecoder|WE'
+Slack : 0.228
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'CLOCK_50'
+Slack : 0.291
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -3.000
+TNS   : -2301.328
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'RegisterDecoder:registerdecoder|WE'
+Slack : -1.000
+TNS   : -32.000
+
+------------------------------------------------------------
