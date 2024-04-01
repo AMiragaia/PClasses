@@ -1,0 +1,69 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.numeric_std.all;
+
+entity Adder8 is
+  port (operand1 : in std_logic_vector(7 downto 0);
+        operand2 : in std_logic_vector(7 downto 0);
+        Result   : out std_logic_vector(8 downto 0));
+end Adder8;
+
+architecture Behavioral of Adder8 is
+    signal carryOut : std_logic_vector(2 downto 0);
+    begin
+        bit0: entity work.FullAdder(Behavioral)
+        port map(a => operand1(0);
+                 b => operand2(0)
+                    cin 	=> cin,
+                    s 		=> s(0),
+                    cout	=> carryOut(0));
+        bit1: entity work.FullAdder(Behavioral)
+        port map( a => operand1(1);
+                 b => operand2(1)
+                    cin 	=> carryOut(0),
+                    s 		=> s(1),
+                    cout	=> carryOut(1));
+        bit2: entity work.FullAdder(Behavioral)
+        port map( a => operand1(2);
+                 b => operand2(2)
+                    cin 	=> carryOut(1),
+                    s 		=> s(2),
+                    cout	=> carryOut(2));
+        bit3: entity work.FullAdder(Behavioral)
+        port map( a => operand1(3);
+                 b => operand2(3)
+                    cin 	=> carryOut(2),
+                    s 		=> s(3),
+                    cout	=> carryOut(3));
+
+        bit4: entity work.FullAdder(Behavioral)
+        port map( a => operand1(4);
+                 b => operand2(4)
+                    cin 	=> carryOut(3),
+                    s 		=> s(4),
+                    cout	=> carryOut(4));
+
+        bit5: entity work.FullAdder(Behavioral)
+        port map( a => operand1(5);
+                 b => operand2(5)
+                    cin 	=> carryOut(4),
+                    s 		=> s(5),
+                    cout	=> carryOut(5));
+        
+        bit6: entity work.FullAdder(Behavioral)
+        port map( a => operand1(6);
+                  b => operand2(6)
+                    cin 	=> carryOut(5),
+                    s 		=> s(6),
+                    cout	=> carryOut(6));
+
+        bit7: entity work.FullAdder(Behavioral)
+        port map( a => operand1(7);
+                  b => operand2(7)
+                    cin 	=> carryOut(6),
+                    s 		=> s(7),
+                    cout	=> carryOut(7));
+    
+        Result 	=> (bit0.Result, bit1.Result, bit2.Result, bit3.Result, bit4.Result, bit5.Result, bit6.Result, bit7.Result, carryOut(7));
+
+    end Behavioral;

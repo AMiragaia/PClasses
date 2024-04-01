@@ -1,0 +1,27 @@
+int checkp(int);
+
+int primes(int *array, int low, int high){
+		int i, npr;
+		int *p;
+
+		p = array;
+
+		for ( i = low + 1, npr = 0; i < high; i++){
+
+			if (checkp(i) == 1) {
+				*array = i;
+				array ++;
+				npr++;
+			}
+		}
+		*(p + npr) = npr;
+		return npr;
+}
+
+Pontos a considerar:
+
+1- Utilização da stack quando os argumentos sao passados entre sub-rotinas, valores que são alterados numa função e chamados depois para outra função devem ser guardados na stack.
+2- Atenção á utilização de memoria e endereços nos arrays, por exemplo sw para escrever lw para ler, adicionar a endereços para fazer array[i]
+3- jal para chamar a função,que pretendemos, preparando os argumentos vindos dos registos $a, isto tambem se aplica á função principal
+
+

@@ -1,0 +1,17 @@
+vendor_name = ModelSim
+source_file = 1, C:/Faculdade/ISD/presolution/P1113/ex8/ShiftReg4.bdf
+source_file = 1, C:/Faculdade/ISD/presolution/P1113/ex8/Waveform.vwf
+source_file = 1, C:/Faculdade/ISD/presolution/P1113/ex8/Block1.bdf
+source_file = 1, C:/Faculdade/ISD/presolution/P1113/ex8/db/ShiftReg4.cbx.xml
+design_name = ShiftReg4
+instance = comp, \Q3~output\, Q3~output, ShiftReg4, 1
+instance = comp, \Q0~output\, Q0~output, ShiftReg4, 1
+instance = comp, \Q1~output\, Q1~output, ShiftReg4, 1
+instance = comp, \Q2~output\, Q2~output, ShiftReg4, 1
+instance = comp, \clk~input\, clk~input, ShiftReg4, 1
+instance = comp, \D0~input\, D0~input, ShiftReg4, 1
+instance = comp, \si~input\, si~input, ShiftReg4, 1
+instance = comp, \D1~input\, D1~input, ShiftReg4, 1
+instance = comp, \ld~input\, ld~input, ShiftReg4, 1
+instance = comp, \D2~input\, D2~input, ShiftReg4, 1
+instance = comp, \D3~input\, D3~input, ShiftReg4, 1

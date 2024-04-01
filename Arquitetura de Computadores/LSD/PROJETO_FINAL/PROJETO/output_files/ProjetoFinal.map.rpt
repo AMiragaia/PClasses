@@ -1,0 +1,1140 @@
+Analysis & Synthesis report for ProjetoFinal
+Wed Jun 22 10:17:18 2022
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |TopLevel|ControlUnit:controlunit|estado
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Parameter Settings for User Entity Instance: GeradorDePulso2Hz:geradordepulso2hz
+ 13. Parameter Settings for User Entity Instance: Timer:timer
+ 14. Parameter Settings for Inferred Entity Instance: BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Mod0
+ 15. Parameter Settings for Inferred Entity Instance: BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Div0
+ 16. Parameter Settings for Inferred Entity Instance: BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Mod1
+ 17. Parameter Settings for Inferred Entity Instance: BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Div1
+ 18. Parameter Settings for Inferred Entity Instance: BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|lpm_divide:Mod0
+ 19. Parameter Settings for Inferred Entity Instance: BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|lpm_divide:Div0
+ 20. Parameter Settings for Inferred Entity Instance: BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|lpm_divide:Mod1
+ 21. Parameter Settings for Inferred Entity Instance: BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|lpm_divide:Div1
+ 22. Port Connectivity Checks: "AritmeticUnit:aritmeticunit|Adder10:adder10_1|FullAdder:bit9"
+ 23. Port Connectivity Checks: "AritmeticUnit:aritmeticunit|Adder10:adder10_1|FullAdder:bit8"
+ 24. Port Connectivity Checks: "AritmeticUnit:aritmeticunit|Adder10:adder10_1"
+ 25. Port Connectivity Checks: "AritmeticUnit:aritmeticunit|Adder9:adder9_1|FullAdder:bit8"
+ 26. Port Connectivity Checks: "AritmeticUnit:aritmeticunit|Adder9:adder9_1"
+ 27. Port Connectivity Checks: "AritmeticUnit:aritmeticunit|Adder8:adder8_1"
+ 28. Post-Synthesis Netlist Statistics for Top Partition
+ 29. Elapsed Time Per Partition
+ 30. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Wed Jun 22 10:17:17 2022       ;
+; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Revision Name                      ; ProjetoFinal                                ;
+; Top-level Entity Name              ; TopLevel                                    ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 4,732                                       ;
+;     Total combinational functions  ; 2,667                                       ;
+;     Dedicated logic registers      ; 2,156                                       ;
+; Total registers                    ; 2156                                        ;
+; Total pins                         ; 61                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EP4CE115F29C7      ;                    ;
+; Top-level entity name                                            ; TopLevel           ; ProjetoFinal       ;
+; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 8           ;
+;                            ;             ;
+; Average used               ; 1.01        ;
+; Maximum used               ; 8           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.1%      ;
+;     Processor 3            ;   0.1%      ;
+;     Processor 4            ;   0.1%      ;
+;     Processor 5            ;   0.1%      ;
+;     Processor 6            ;   0.1%      ;
+;     Processor 7            ;   0.1%      ;
+;     Processor 8            ;   0.1%      ;
++----------------------------+-------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                    ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                ; Library ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------+---------+
+; AddressGenerator.vhd             ; yes             ; User VHDL File               ; C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/AddressGenerator.vhd            ;         ;
+; AddressCounter.vhd               ; yes             ; User VHDL File               ; C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/AddressCounter.vhd              ;         ;
+; NoisyTriangSignal_ROM_256x8.vhd  ; yes             ; User VHDL File               ; C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/NoisyTriangSignal_ROM_256x8.vhd ;         ;
+; RegisterDecoder.vhd              ; yes             ; User VHDL File               ; C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/RegisterDecoder.vhd             ;         ;
+; Ram_256x8.vhd                    ; yes             ; User VHDL File               ; C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Ram_256x8.vhd                   ;         ;
+; RegisterBank.vhd                 ; yes             ; User VHDL File               ; C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/RegisterBank.vhd                ;         ;
+; Adder8.vhd                       ; yes             ; User VHDL File               ; C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Adder8.vhd                      ;         ;
+; FullAdder.vhd                    ; yes             ; User VHDL File               ; C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/FullAdder.vhd                   ;         ;
+; AritmeticUnit.vhd                ; yes             ; User VHDL File               ; C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/AritmeticUnit.vhd               ;         ;
+; Timer.vhd                        ; yes             ; User VHDL File               ; C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Timer.vhd                       ;         ;
+; GeradorDePulso2Hz.vhd            ; yes             ; User VHDL File               ; C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/GeradorDePulso2Hz.vhd           ;         ;
+; Bin2Bcd.vhd                      ; yes             ; User VHDL File               ; C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Bin2Bcd.vhd                     ;         ;
+; BCDTo7Seg.vhd                    ; yes             ; User VHDL File               ; C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/BCDTo7Seg.vhd                   ;         ;
+; BcdDisplay.vhd                   ; yes             ; User VHDL File               ; C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/BcdDisplay.vhd                  ;         ;
+; Adder9.vhd                       ; yes             ; User VHDL File               ; C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Adder9.vhd                      ;         ;
+; Adder10.vhd                      ; yes             ; User VHDL File               ; C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Adder10.vhd                     ;         ;
+; ControlUnit.vhd                  ; yes             ; User VHDL File               ; C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/ControlUnit.vhd                 ;         ;
+; TopLevel.vhd                     ; yes             ; User VHDL File               ; C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/TopLevel.vhd                    ;         ;
+; BcdDisplayRam.vhd                ; yes             ; User VHDL File               ; C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/BcdDisplayRam.vhd               ;         ;
+; MuxFilter.vhd                    ; yes             ; User VHDL File               ; C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/MuxFilter.vhd                   ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_divide.tdf       ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/abs_divider.inc      ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/sign_div_unsign.inc  ;         ;
+; aglobal201.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/aglobal201.inc       ;         ;
+; db/lpm_divide_q9m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/db/lpm_divide_q9m.tdf           ;         ;
+; db/sign_div_unsign_fkh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/db/sign_div_unsign_fkh.tdf      ;         ;
+; db/alt_u_div_i4f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/db/alt_u_div_i4f.tdf            ;         ;
+; db/add_sub_7pc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/db/add_sub_7pc.tdf              ;         ;
+; db/add_sub_8pc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/db/add_sub_8pc.tdf              ;         ;
+; db/lpm_divide_nhm.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/db/lpm_divide_nhm.tdf           ;         ;
+; db/lpm_divide_m9m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/db/lpm_divide_m9m.tdf           ;         ;
+; db/lpm_divide_jhm.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/db/lpm_divide_jhm.tdf           ;         ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------+---------+
+
+
++--------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                  ;
++---------------------------------------------+----------------+
+; Resource                                    ; Usage          ;
++---------------------------------------------+----------------+
+; Estimated Total logic elements              ; 4,732          ;
+;                                             ;                ;
+; Total combinational functions               ; 2667           ;
+; Logic element usage by number of LUT inputs ;                ;
+;     -- 4 input functions                    ; 2029           ;
+;     -- 3 input functions                    ; 131            ;
+;     -- <=2 input functions                  ; 507            ;
+;                                             ;                ;
+; Logic elements by mode                      ;                ;
+;     -- normal mode                          ; 2455           ;
+;     -- arithmetic mode                      ; 212            ;
+;                                             ;                ;
+; Total registers                             ; 2156           ;
+;     -- Dedicated logic registers            ; 2156           ;
+;     -- I/O registers                        ; 0              ;
+;                                             ;                ;
+; I/O pins                                    ; 61             ;
+;                                             ;                ;
+; Embedded Multiplier 9-bit elements          ; 0              ;
+;                                             ;                ;
+; Maximum fan-out node                        ; CLOCK_50~input ;
+; Maximum fan-out                             ; 2124           ;
+; Total fan-out                               ; 16083          ;
+; Average fan-out                             ; 3.25           ;
++---------------------------------------------+----------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                                          ;
++----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------+--------------+
+; Compilation Hierarchy Node                   ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                   ; Entity Name                 ; Library Name ;
++----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------+--------------+
+; |TopLevel                                    ; 2667 (1)            ; 2156 (0)                  ; 0           ; 0            ; 0       ; 0         ; 61   ; 0            ; |TopLevel                                                                                                                                             ; TopLevel                    ; work         ;
+;    |AddressGenerator:addresscounter|         ; 8 (0)               ; 8 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AddressGenerator:addresscounter                                                                                                             ; AddressGenerator            ; work         ;
+;       |AddressCounter:adder|                 ; 8 (8)               ; 8 (8)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AddressGenerator:addresscounter|AddressCounter:adder                                                                                        ; AddressCounter              ; work         ;
+;    |AritmeticUnit:aritmeticunit|             ; 84 (30)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit                                                                                                                 ; AritmeticUnit               ; work         ;
+;       |Adder10:adder10_1|                    ; 18 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit|Adder10:adder10_1                                                                                               ; Adder10                     ; work         ;
+;          |FullAdder:bit0|                    ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit|Adder10:adder10_1|FullAdder:bit0                                                                                ; FullAdder                   ; work         ;
+;          |FullAdder:bit1|                    ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit|Adder10:adder10_1|FullAdder:bit1                                                                                ; FullAdder                   ; work         ;
+;          |FullAdder:bit2|                    ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit|Adder10:adder10_1|FullAdder:bit2                                                                                ; FullAdder                   ; work         ;
+;          |FullAdder:bit3|                    ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit|Adder10:adder10_1|FullAdder:bit3                                                                                ; FullAdder                   ; work         ;
+;          |FullAdder:bit4|                    ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit|Adder10:adder10_1|FullAdder:bit4                                                                                ; FullAdder                   ; work         ;
+;          |FullAdder:bit5|                    ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit|Adder10:adder10_1|FullAdder:bit5                                                                                ; FullAdder                   ; work         ;
+;          |FullAdder:bit6|                    ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit|Adder10:adder10_1|FullAdder:bit6                                                                                ; FullAdder                   ; work         ;
+;          |FullAdder:bit7|                    ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit|Adder10:adder10_1|FullAdder:bit7                                                                                ; FullAdder                   ; work         ;
+;          |FullAdder:bit8|                    ; 3 (3)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit|Adder10:adder10_1|FullAdder:bit8                                                                                ; FullAdder                   ; work         ;
+;       |Adder8:adder8_1|                      ; 15 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit|Adder8:adder8_1                                                                                                 ; Adder8                      ; work         ;
+;          |FullAdder:bit1|                    ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit|Adder8:adder8_1|FullAdder:bit1                                                                                  ; FullAdder                   ; work         ;
+;          |FullAdder:bit2|                    ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit|Adder8:adder8_1|FullAdder:bit2                                                                                  ; FullAdder                   ; work         ;
+;          |FullAdder:bit3|                    ; 5 (5)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit|Adder8:adder8_1|FullAdder:bit3                                                                                  ; FullAdder                   ; work         ;
+;          |FullAdder:bit4|                    ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit|Adder8:adder8_1|FullAdder:bit4                                                                                  ; FullAdder                   ; work         ;
+;          |FullAdder:bit5|                    ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit|Adder8:adder8_1|FullAdder:bit5                                                                                  ; FullAdder                   ; work         ;
+;          |FullAdder:bit6|                    ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit|Adder8:adder8_1|FullAdder:bit6                                                                                  ; FullAdder                   ; work         ;
+;          |FullAdder:bit7|                    ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit|Adder8:adder8_1|FullAdder:bit7                                                                                  ; FullAdder                   ; work         ;
+;       |Adder9:adder9_1|                      ; 21 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit|Adder9:adder9_1                                                                                                 ; Adder9                      ; work         ;
+;          |FullAdder:bit0|                    ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit|Adder9:adder9_1|FullAdder:bit0                                                                                  ; FullAdder                   ; work         ;
+;          |FullAdder:bit1|                    ; 4 (4)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit|Adder9:adder9_1|FullAdder:bit1                                                                                  ; FullAdder                   ; work         ;
+;          |FullAdder:bit2|                    ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit|Adder9:adder9_1|FullAdder:bit2                                                                                  ; FullAdder                   ; work         ;
+;          |FullAdder:bit3|                    ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit|Adder9:adder9_1|FullAdder:bit3                                                                                  ; FullAdder                   ; work         ;
+;          |FullAdder:bit4|                    ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit|Adder9:adder9_1|FullAdder:bit4                                                                                  ; FullAdder                   ; work         ;
+;          |FullAdder:bit5|                    ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit|Adder9:adder9_1|FullAdder:bit5                                                                                  ; FullAdder                   ; work         ;
+;          |FullAdder:bit6|                    ; 3 (3)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit|Adder9:adder9_1|FullAdder:bit6                                                                                  ; FullAdder                   ; work         ;
+;          |FullAdder:bit7|                    ; 3 (3)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit|Adder9:adder9_1|FullAdder:bit7                                                                                  ; FullAdder                   ; work         ;
+;          |FullAdder:bit8|                    ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|AritmeticUnit:aritmeticunit|Adder9:adder9_1|FullAdder:bit8                                                                                  ; FullAdder                   ; work         ;
+;    |BcdDisplay:bcddisplay|                   ; 199 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplay:bcddisplay                                                                                                                       ; BcdDisplay                  ; work         ;
+;       |Bin2Bcd:bin2bcd|                      ; 184 (12)            ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd                                                                                                       ; Bin2Bcd                     ; work         ;
+;          |lpm_divide:Div0|                   ; 74 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Div0                                                                                       ; lpm_divide                  ; work         ;
+;             |lpm_divide_nhm:auto_generated|  ; 74 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Div0|lpm_divide_nhm:auto_generated                                                         ; lpm_divide_nhm              ; work         ;
+;                |sign_div_unsign_fkh:divider| ; 74 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Div0|lpm_divide_nhm:auto_generated|sign_div_unsign_fkh:divider                             ; sign_div_unsign_fkh         ; work         ;
+;                   |alt_u_div_i4f:divider|    ; 74 (74)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Div0|lpm_divide_nhm:auto_generated|sign_div_unsign_fkh:divider|alt_u_div_i4f:divider       ; alt_u_div_i4f               ; work         ;
+;          |lpm_divide:Div1|                   ; 8 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Div1                                                                                       ; lpm_divide                  ; work         ;
+;             |lpm_divide_jhm:auto_generated|  ; 8 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Div1|lpm_divide_jhm:auto_generated                                                         ; lpm_divide_jhm              ; work         ;
+;                |sign_div_unsign_fkh:divider| ; 8 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Div1|lpm_divide_jhm:auto_generated|sign_div_unsign_fkh:divider                             ; sign_div_unsign_fkh         ; work         ;
+;                   |alt_u_div_i4f:divider|    ; 8 (8)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Div1|lpm_divide_jhm:auto_generated|sign_div_unsign_fkh:divider|alt_u_div_i4f:divider       ; alt_u_div_i4f               ; work         ;
+;          |lpm_divide:Mod0|                   ; 77 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Mod0                                                                                       ; lpm_divide                  ; work         ;
+;             |lpm_divide_q9m:auto_generated|  ; 77 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Mod0|lpm_divide_q9m:auto_generated                                                         ; lpm_divide_q9m              ; work         ;
+;                |sign_div_unsign_fkh:divider| ; 77 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Mod0|lpm_divide_q9m:auto_generated|sign_div_unsign_fkh:divider                             ; sign_div_unsign_fkh         ; work         ;
+;                   |alt_u_div_i4f:divider|    ; 77 (77)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Mod0|lpm_divide_q9m:auto_generated|sign_div_unsign_fkh:divider|alt_u_div_i4f:divider       ; alt_u_div_i4f               ; work         ;
+;          |lpm_divide:Mod1|                   ; 13 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Mod1                                                                                       ; lpm_divide                  ; work         ;
+;             |lpm_divide_m9m:auto_generated|  ; 13 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Mod1|lpm_divide_m9m:auto_generated                                                         ; lpm_divide_m9m              ; work         ;
+;                |sign_div_unsign_fkh:divider| ; 13 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Mod1|lpm_divide_m9m:auto_generated|sign_div_unsign_fkh:divider                             ; sign_div_unsign_fkh         ; work         ;
+;                   |alt_u_div_i4f:divider|    ; 13 (13)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Mod1|lpm_divide_m9m:auto_generated|sign_div_unsign_fkh:divider|alt_u_div_i4f:divider       ; alt_u_div_i4f               ; work         ;
+;       |Decoder7Led:Decoder7Led|              ; 15 (15)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplay:bcddisplay|Decoder7Led:Decoder7Led                                                                                               ; Decoder7Led                 ; work         ;
+;    |BcdDisplayRam:bcddisplayram|             ; 199 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplayRam:bcddisplayram                                                                                                                 ; BcdDisplayRam               ; work         ;
+;       |Bin2Bcd:bin2bcd|                      ; 184 (12)            ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd                                                                                                 ; Bin2Bcd                     ; work         ;
+;          |lpm_divide:Div0|                   ; 74 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|lpm_divide:Div0                                                                                 ; lpm_divide                  ; work         ;
+;             |lpm_divide_nhm:auto_generated|  ; 74 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|lpm_divide:Div0|lpm_divide_nhm:auto_generated                                                   ; lpm_divide_nhm              ; work         ;
+;                |sign_div_unsign_fkh:divider| ; 74 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|lpm_divide:Div0|lpm_divide_nhm:auto_generated|sign_div_unsign_fkh:divider                       ; sign_div_unsign_fkh         ; work         ;
+;                   |alt_u_div_i4f:divider|    ; 74 (74)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|lpm_divide:Div0|lpm_divide_nhm:auto_generated|sign_div_unsign_fkh:divider|alt_u_div_i4f:divider ; alt_u_div_i4f               ; work         ;
+;          |lpm_divide:Div1|                   ; 8 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|lpm_divide:Div1                                                                                 ; lpm_divide                  ; work         ;
+;             |lpm_divide_jhm:auto_generated|  ; 8 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|lpm_divide:Div1|lpm_divide_jhm:auto_generated                                                   ; lpm_divide_jhm              ; work         ;
+;                |sign_div_unsign_fkh:divider| ; 8 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|lpm_divide:Div1|lpm_divide_jhm:auto_generated|sign_div_unsign_fkh:divider                       ; sign_div_unsign_fkh         ; work         ;
+;                   |alt_u_div_i4f:divider|    ; 8 (8)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|lpm_divide:Div1|lpm_divide_jhm:auto_generated|sign_div_unsign_fkh:divider|alt_u_div_i4f:divider ; alt_u_div_i4f               ; work         ;
+;          |lpm_divide:Mod0|                   ; 77 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|lpm_divide:Mod0                                                                                 ; lpm_divide                  ; work         ;
+;             |lpm_divide_q9m:auto_generated|  ; 77 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|lpm_divide:Mod0|lpm_divide_q9m:auto_generated                                                   ; lpm_divide_q9m              ; work         ;
+;                |sign_div_unsign_fkh:divider| ; 77 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|lpm_divide:Mod0|lpm_divide_q9m:auto_generated|sign_div_unsign_fkh:divider                       ; sign_div_unsign_fkh         ; work         ;
+;                   |alt_u_div_i4f:divider|    ; 77 (77)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|lpm_divide:Mod0|lpm_divide_q9m:auto_generated|sign_div_unsign_fkh:divider|alt_u_div_i4f:divider ; alt_u_div_i4f               ; work         ;
+;          |lpm_divide:Mod1|                   ; 13 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|lpm_divide:Mod1                                                                                 ; lpm_divide                  ; work         ;
+;             |lpm_divide_m9m:auto_generated|  ; 13 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|lpm_divide:Mod1|lpm_divide_m9m:auto_generated                                                   ; lpm_divide_m9m              ; work         ;
+;                |sign_div_unsign_fkh:divider| ; 13 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|lpm_divide:Mod1|lpm_divide_m9m:auto_generated|sign_div_unsign_fkh:divider                       ; sign_div_unsign_fkh         ; work         ;
+;                   |alt_u_div_i4f:divider|    ; 13 (13)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|lpm_divide:Mod1|lpm_divide_m9m:auto_generated|sign_div_unsign_fkh:divider|alt_u_div_i4f:divider ; alt_u_div_i4f               ; work         ;
+;       |Decoder7Led:Decoder7Led|              ; 15 (15)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|BcdDisplayRam:bcddisplayram|Decoder7Led:Decoder7Led                                                                                         ; Decoder7Led                 ; work         ;
+;    |GeradorDePulso2Hz:geradordepulso2hz|     ; 46 (46)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|GeradorDePulso2Hz:geradordepulso2hz                                                                                                         ; GeradorDePulso2Hz           ; work         ;
+;    |NoisyTriangSignal_ROM_256x8:rom|         ; 181 (181)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|NoisyTriangSignal_ROM_256x8:rom                                                                                                             ; NoisyTriangSignal_ROM_256x8 ; work         ;
+;    |Ram_256x8:ram|                           ; 1905 (1905)         ; 2056 (2056)               ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|Ram_256x8:ram                                                                                                                               ; Ram_256x8                   ; work         ;
+;    |RegisterBank:registerbank|               ; 0 (0)               ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|RegisterBank:registerbank                                                                                                                   ; RegisterBank                ; work         ;
+;    |RegisterDecoder:registerdecoder|         ; 0 (0)               ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|RegisterDecoder:registerdecoder                                                                                                             ; RegisterDecoder             ; work         ;
+;    |Timer:timer|                             ; 44 (44)             ; 33 (33)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |TopLevel|Timer:timer                                                                                                                                 ; Timer                       ; work         ;
++----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------+
+; State Machine - |TopLevel|ControlUnit:controlunit|estado                                                             ;
++------------------+----------------+----------------+------------------+-----------------+-----------------+----------+
+; Name             ; estado.Filter1 ; estado.Filter0 ; estado.WriteData ; estado.ResetRam ; estado.ReadData ; estado.S ;
++------------------+----------------+----------------+------------------+-----------------+-----------------+----------+
+; estado.S         ; 0              ; 0              ; 0                ; 0               ; 0               ; 0        ;
+; estado.ReadData  ; 0              ; 0              ; 0                ; 0               ; 1               ; 1        ;
+; estado.ResetRam  ; 0              ; 0              ; 0                ; 1               ; 0               ; 1        ;
+; estado.WriteData ; 0              ; 0              ; 1                ; 0               ; 0               ; 1        ;
+; estado.Filter0   ; 0              ; 1              ; 0                ; 0               ; 0               ; 1        ;
+; estado.Filter1   ; 1              ; 0              ; 0                ; 0               ; 0               ; 1        ;
++------------------+----------------+----------------+------------------+-----------------+-----------------+----------+
+
+
++---------------------------------------------------------------+
+; Registers Removed During Synthesis                            ;
++------------------------------------------+--------------------+
+; Register name                            ; Reason for Removal ;
++------------------------------------------+--------------------+
+; ControlUnit:controlunit|estado.S         ; Lost fanout        ;
+; ControlUnit:controlunit|estado.ReadData  ; Lost fanout        ;
+; ControlUnit:controlunit|estado.ResetRam  ; Lost fanout        ;
+; ControlUnit:controlunit|estado.WriteData ; Lost fanout        ;
+; ControlUnit:controlunit|estado.Filter0   ; Lost fanout        ;
+; ControlUnit:controlunit|estado.Filter1   ; Lost fanout        ;
+; Total Number of Removed Registers = 6    ;                    ;
++------------------------------------------+--------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 2156  ;
+; Number of registers using Synchronous Clear  ; 41    ;
+; Number of registers using Synchronous Load   ; 32    ;
+; Number of registers using Asynchronous Clear ; 32    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 2073  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------+
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[0][3]                                    ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[1][0]                                    ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[2][0]                                    ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[3][7]                                    ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[4][4]                                    ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[5][4]                                    ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[6][4]                                    ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[7][5]                                    ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[8][3]                                    ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[9][3]                                    ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[10][4]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[11][2]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[12][3]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[13][3]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[14][3]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[15][3]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[16][3]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[17][4]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[18][2]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[19][3]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[20][7]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[21][0]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[22][1]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[23][5]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[24][4]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[25][4]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[26][5]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[27][6]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[28][6]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[29][0]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[30][4]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[31][6]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[32][4]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[33][2]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[34][3]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[35][4]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[36][7]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[37][5]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[38][5]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[39][5]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[40][5]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[41][5]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[42][3]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[43][0]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[44][5]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[45][5]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[46][5]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[47][6]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[48][6]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[49][6]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[50][6]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[51][2]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[52][0]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[53][0]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[54][4]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[55][5]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[56][4]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[57][5]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[58][1]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[59][7]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[60][4]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[61][7]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[62][2]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[63][2]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[64][5]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[65][5]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[66][1]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[67][0]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[68][5]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[69][1]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[70][0]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[71][0]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[72][6]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[73][6]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[74][5]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[75][2]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[76][2]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[77][3]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[78][4]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[79][5]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[80][3]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[81][1]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[82][6]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[83][4]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[84][2]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[85][1]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[86][6]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[87][7]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[88][2]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[89][1]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[90][7]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[91][1]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[92][5]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[93][2]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[94][6]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[95][5]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[96][2]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[97][2]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[98][7]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[99][1]                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[100][1]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[101][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[102][0]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[103][1]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[104][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[105][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[106][5]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[107][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[108][1]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[109][1]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[110][3]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[111][0]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[112][0]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[113][0]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[114][0]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[115][0]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[116][0]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[117][0]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[118][0]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[119][5]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[120][3]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[121][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[122][0]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[123][0]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[124][0]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[125][5]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[126][6]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[127][2]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[128][0]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[129][1]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[130][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[131][6]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[132][6]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[133][2]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[134][5]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[135][6]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[136][1]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[137][3]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[138][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[139][0]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[140][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[141][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[142][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[143][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[144][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[145][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[146][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[147][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[148][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[149][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[150][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[151][0]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[152][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[153][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[154][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[155][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[156][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[157][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[158][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[159][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[160][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[161][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[162][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[163][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[164][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[165][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[166][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[167][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[168][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[169][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[170][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[171][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[172][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[173][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[174][5]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[175][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[176][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[177][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[178][1]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[179][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[180][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[181][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[182][6]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[183][6]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[184][2]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[185][2]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[186][2]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[187][6]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[188][6]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[189][1]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[190][3]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[191][0]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[192][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[193][2]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[194][3]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[195][2]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[196][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[197][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[198][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[199][6]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[200][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[201][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[202][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[203][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[204][3]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[205][3]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[206][3]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[207][0]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[208][1]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[209][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[210][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[211][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[212][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[213][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[214][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[215][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[216][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[217][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[218][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[219][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[220][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[221][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[222][3]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[223][2]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[224][1]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[225][1]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[226][2]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[227][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[228][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[229][3]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[230][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[231][0]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[232][3]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[233][0]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[234][1]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[235][0]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[236][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[237][6]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[238][1]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[239][1]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[240][1]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[241][1]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[242][1]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[243][0]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[244][0]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[245][0]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[246][1]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[247][1]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[248][1]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[249][7]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[250][1]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[251][3]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[252][2]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[253][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[254][4]                                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|s_Memoria[255][0]                                  ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |TopLevel|Timer:timer|s_count[26]                                          ;
+; 256:1              ; 8 bits    ; 1360 LEs      ; 1360 LEs             ; 0 LEs                  ; Yes        ; |TopLevel|Ram_256x8:ram|DataOut[0]                                         ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |TopLevel|BcdDisplay:bcddisplay|Decoder7Led:Decoder7Led|decOut_n2[6]       ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |TopLevel|BcdDisplayRam:bcddisplayram|Decoder7Led:Decoder7Led|decOut_n2[6] ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |TopLevel|Ram_256x8:ram|s_Memoria                                          ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; No         ; |TopLevel|BcdDisplay:bcddisplay|Decoder7Led:Decoder7Led|decOut_n4[4]       ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; No         ; |TopLevel|BcdDisplay:bcddisplay|Decoder7Led:Decoder7Led|decOut_n3[4]       ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; No         ; |TopLevel|BcdDisplayRam:bcddisplayram|Decoder7Led:Decoder7Led|decOut_n4[4] ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; No         ; |TopLevel|BcdDisplayRam:bcddisplayram|Decoder7Led:Decoder7Led|decOut_n3[4] ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |TopLevel|BcdDisplay:bcddisplay|Decoder7Led:Decoder7Led|decOut_n4[5]       ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |TopLevel|BcdDisplay:bcddisplay|Decoder7Led:Decoder7Led|decOut_n3[3]       ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |TopLevel|BcdDisplay:bcddisplay|Decoder7Led:Decoder7Led|decOut_n2[3]       ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |TopLevel|BcdDisplayRam:bcddisplayram|Decoder7Led:Decoder7Led|decOut_n4[3] ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |TopLevel|BcdDisplayRam:bcddisplayram|Decoder7Led:Decoder7Led|decOut_n3[3] ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |TopLevel|BcdDisplayRam:bcddisplayram|Decoder7Led:Decoder7Led|decOut_n2[3] ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |TopLevel|ControlUnit:controlunit|Selector5                                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: GeradorDePulso2Hz:geradordepulso2hz ;
++----------------+----------+------------------------------------------------------+
+; Parameter Name ; Value    ; Type                                                 ;
++----------------+----------+------------------------------------------------------+
+; max            ; 25000000 ; Signed Integer                                       ;
++----------------+----------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Timer:timer ;
++----------------+-------+---------------------------------+
+; Parameter Name ; Value ; Type                            ;
++----------------+-------+---------------------------------+
+; n              ; 2     ; Signed Integer                  ;
++----------------+-------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Mod0 ;
++------------------------+----------------+--------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                         ;
++------------------------+----------------+--------------------------------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                                      ;
+; LPM_WIDTHD             ; 8              ; Untyped                                                      ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                      ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                      ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                      ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                      ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                      ;
+; CBXI_PARAMETER         ; lpm_divide_q9m ; Untyped                                                      ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                      ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                      ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                   ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                 ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                 ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                               ;
++------------------------+----------------+--------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Div0 ;
++------------------------+----------------+--------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                         ;
++------------------------+----------------+--------------------------------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                                      ;
+; LPM_WIDTHD             ; 8              ; Untyped                                                      ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                      ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                      ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                      ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                      ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                      ;
+; CBXI_PARAMETER         ; lpm_divide_nhm ; Untyped                                                      ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                      ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                      ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                   ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                 ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                 ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                               ;
++------------------------+----------------+--------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Mod1 ;
++------------------------+----------------+--------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                         ;
++------------------------+----------------+--------------------------------------------------------------+
+; LPM_WIDTHN             ; 4              ; Untyped                                                      ;
+; LPM_WIDTHD             ; 8              ; Untyped                                                      ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                      ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                      ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                      ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                      ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                      ;
+; CBXI_PARAMETER         ; lpm_divide_m9m ; Untyped                                                      ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                      ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                      ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                   ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                 ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                 ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                               ;
++------------------------+----------------+--------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Div1 ;
++------------------------+----------------+--------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                         ;
++------------------------+----------------+--------------------------------------------------------------+
+; LPM_WIDTHN             ; 4              ; Untyped                                                      ;
+; LPM_WIDTHD             ; 8              ; Untyped                                                      ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                      ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                      ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                      ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                      ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                      ;
+; CBXI_PARAMETER         ; lpm_divide_jhm ; Untyped                                                      ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                      ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                      ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                   ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                 ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                 ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                               ;
++------------------------+----------------+--------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|lpm_divide:Mod0 ;
++------------------------+----------------+--------------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                               ;
++------------------------+----------------+--------------------------------------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                                            ;
+; LPM_WIDTHD             ; 8              ; Untyped                                                            ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                            ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                            ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                            ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                            ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                            ;
+; CBXI_PARAMETER         ; lpm_divide_q9m ; Untyped                                                            ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                            ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                            ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                         ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                       ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                       ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                                     ;
++------------------------+----------------+--------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|lpm_divide:Div0 ;
++------------------------+----------------+--------------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                               ;
++------------------------+----------------+--------------------------------------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                                            ;
+; LPM_WIDTHD             ; 8              ; Untyped                                                            ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                            ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                            ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                            ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                            ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                            ;
+; CBXI_PARAMETER         ; lpm_divide_nhm ; Untyped                                                            ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                            ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                            ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                         ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                       ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                       ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                                     ;
++------------------------+----------------+--------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|lpm_divide:Mod1 ;
++------------------------+----------------+--------------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                               ;
++------------------------+----------------+--------------------------------------------------------------------+
+; LPM_WIDTHN             ; 4              ; Untyped                                                            ;
+; LPM_WIDTHD             ; 8              ; Untyped                                                            ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                            ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                            ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                            ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                            ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                            ;
+; CBXI_PARAMETER         ; lpm_divide_m9m ; Untyped                                                            ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                            ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                            ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                         ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                       ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                       ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                                     ;
++------------------------+----------------+--------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|lpm_divide:Div1 ;
++------------------------+----------------+--------------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                               ;
++------------------------+----------------+--------------------------------------------------------------------+
+; LPM_WIDTHN             ; 4              ; Untyped                                                            ;
+; LPM_WIDTHD             ; 8              ; Untyped                                                            ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                            ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                            ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                            ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                            ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                            ;
+; CBXI_PARAMETER         ; lpm_divide_jhm ; Untyped                                                            ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                            ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                            ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                         ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                       ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                       ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                                     ;
++------------------------+----------------+--------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AritmeticUnit:aritmeticunit|Adder10:adder10_1|FullAdder:bit9"                       ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; b    ; Input  ; Info     ; Stuck at GND                                                                        ;
+; cout ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AritmeticUnit:aritmeticunit|Adder10:adder10_1|FullAdder:bit8" ;
++------+-------+----------+----------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                        ;
++------+-------+----------+----------------------------------------------------------------+
+; b    ; Input ; Info     ; Stuck at GND                                                   ;
++------+-------+----------+----------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AritmeticUnit:aritmeticunit|Adder10:adder10_1"                                      ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; cin  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; cout ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AritmeticUnit:aritmeticunit|Adder9:adder9_1|FullAdder:bit8" ;
++------+-------+----------+--------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                      ;
++------+-------+----------+--------------------------------------------------------------+
+; b    ; Input ; Info     ; Stuck at GND                                                 ;
++------+-------+----------+--------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AritmeticUnit:aritmeticunit|Adder9:adder9_1"                                        ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; cin  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; cout ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AritmeticUnit:aritmeticunit|Adder8:adder8_1"                                        ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; cin  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; cout ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 61                          ;
+; cycloneiii_ff         ; 2156                        ;
+;     CLR               ; 32                          ;
+;     ENA               ; 2073                        ;
+;     SCLR              ; 9                           ;
+;     SCLR SLD          ; 32                          ;
+;     plain             ; 10                          ;
+; cycloneiii_lcell_comb ; 2674                        ;
+;     arith             ; 212                         ;
+;         1 data inputs ; 16                          ;
+;         2 data inputs ; 105                         ;
+;         3 data inputs ; 91                          ;
+;     normal            ; 2462                        ;
+;         0 data inputs ; 26                          ;
+;         1 data inputs ; 13                          ;
+;         2 data inputs ; 354                         ;
+;         3 data inputs ; 40                          ;
+;         4 data inputs ; 2029                        ;
+;                       ;                             ;
+; Max LUT depth         ; 22.00                       ;
+; Average LUT depth     ; 7.66                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:05     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Wed Jun 22 10:17:06 2022
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ProjetoFinal -c ProjetoFinal
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file addressgenerator.vhd
+    Info (12022): Found design unit 1: AddressGenerator-behavioral File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/AddressGenerator.vhd Line: 13
+    Info (12023): Found entity 1: AddressGenerator File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/AddressGenerator.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file addresscounter.vhd
+    Info (12022): Found design unit 1: AddressCounter-Behavioral File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/AddressCounter.vhd Line: 10
+    Info (12023): Found entity 1: AddressCounter File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/AddressCounter.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file noisytriangsignal_rom_256x8.vhd
+    Info (12022): Found design unit 1: NoisyTriangSignal_ROM_256x8-Behavioral File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/NoisyTriangSignal_ROM_256x8.vhd Line: 10
+    Info (12023): Found entity 1: NoisyTriangSignal_ROM_256x8 File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/NoisyTriangSignal_ROM_256x8.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file registerdecoder.vhd
+    Info (12022): Found design unit 1: RegisterDecoder-Behavioral File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/RegisterDecoder.vhd Line: 10
+    Info (12023): Found entity 1: RegisterDecoder File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/RegisterDecoder.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file ram_256x8.vhd
+    Info (12022): Found design unit 1: Ram_256x8-Behavioral File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Ram_256x8.vhd Line: 16
+    Info (12023): Found entity 1: Ram_256x8 File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Ram_256x8.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file registerbank.vhd
+    Info (12022): Found design unit 1: RegisterBank-behavioral File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/RegisterBank.vhd Line: 14
+    Info (12023): Found entity 1: RegisterBank File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/RegisterBank.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file adder8.vhd
+    Info (12022): Found design unit 1: Adder8-Behavioral File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Adder8.vhd Line: 13
+    Info (12023): Found entity 1: Adder8 File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Adder8.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file fulladder.vhd
+    Info (12022): Found design unit 1: FullAdder-Behavioral File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/FullAdder.vhd Line: 9
+    Info (12023): Found entity 1: FullAdder File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/FullAdder.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file aritmeticunit.vhd
+    Info (12022): Found design unit 1: AritmeticUnit-Behavioral File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/AritmeticUnit.vhd Line: 13
+    Info (12023): Found entity 1: AritmeticUnit File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/AritmeticUnit.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file timer.vhd
+    Info (12022): Found design unit 1: Timer-Behavioral File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Timer.vhd Line: 13
+    Info (12023): Found entity 1: Timer File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Timer.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file geradordepulso2hz.vhd
+    Info (12022): Found design unit 1: GeradorDePulso2Hz-Behavioral File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/GeradorDePulso2Hz.vhd Line: 13
+    Info (12023): Found entity 1: GeradorDePulso2Hz File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/GeradorDePulso2Hz.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file bin2bcd.vhd
+    Info (12022): Found design unit 1: Bin2Bcd-Behavioral File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Bin2Bcd.vhd Line: 14
+    Info (12023): Found entity 1: Bin2Bcd File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Bin2Bcd.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file bcdto7seg.vhd
+    Info (12022): Found design unit 1: Decoder7Led-Behavioral File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/BCDTo7Seg.vhd Line: 12
+    Info (12023): Found entity 1: Decoder7Led File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/BCDTo7Seg.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file bcddisplay.vhd
+    Info (12022): Found design unit 1: BcdDisplay-Behavioral File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/BcdDisplay.vhd Line: 15
+    Info (12023): Found entity 1: BcdDisplay File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/BcdDisplay.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file adder9.vhd
+    Info (12022): Found design unit 1: Adder9-Behavioral File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Adder9.vhd Line: 13
+    Info (12023): Found entity 1: Adder9 File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Adder9.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file adder10.vhd
+    Info (12022): Found design unit 1: Adder10-Behavioral File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Adder10.vhd Line: 13
+    Info (12023): Found entity 1: Adder10 File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Adder10.vhd Line: 5
+Warning (12019): Can't analyze file -- file Debouncer.vhd is missing
+Info (12021): Found 2 design units, including 1 entities, in source file controlunit.vhd
+    Info (12022): Found design unit 1: ControlUnit-behavioral File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/ControlUnit.vhd Line: 16
+    Info (12023): Found entity 1: ControlUnit File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/ControlUnit.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file toplevel.vhd
+    Info (12022): Found design unit 1: toplevel-structural File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/TopLevel.vhd Line: 19
+    Info (12023): Found entity 1: TopLevel File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/TopLevel.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file bcddisplayram.vhd
+    Info (12022): Found design unit 1: BcdDisplayRam-Behavioral File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/BcdDisplayRam.vhd Line: 15
+    Info (12023): Found entity 1: BcdDisplayRam File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/BcdDisplayRam.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file muxfilter.vhd
+    Info (12022): Found design unit 1: MuxFilter-Behavioral File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/MuxFilter.vhd Line: 11
+    Info (12023): Found entity 1: MuxFilter File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/MuxFilter.vhd Line: 4
+Info (12127): Elaborating entity "TopLevel" for the top level hierarchy
+Info (12129): Elaborating entity "ControlUnit" using architecture "A:behavioral" for hierarchy "ControlUnit:controlunit" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/TopLevel.vhd Line: 40
+Info (12129): Elaborating entity "GeradorDePulso2Hz" using architecture "A:behavioral" for hierarchy "GeradorDePulso2Hz:geradordepulso2hz" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/TopLevel.vhd Line: 51
+Info (12129): Elaborating entity "AddressGenerator" using architecture "A:behavioral" for hierarchy "AddressGenerator:addresscounter" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/TopLevel.vhd Line: 56
+Info (12129): Elaborating entity "AddressCounter" using architecture "A:behavioral" for hierarchy "AddressGenerator:addresscounter|AddressCounter:adder" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/AddressGenerator.vhd Line: 18
+Info (12129): Elaborating entity "NoisyTriangSignal_ROM_256x8" using architecture "A:behavioral" for hierarchy "NoisyTriangSignal_ROM_256x8:rom" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/TopLevel.vhd Line: 62
+Info (12129): Elaborating entity "RegisterDecoder" using architecture "A:behavioral" for hierarchy "RegisterDecoder:registerdecoder" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/TopLevel.vhd Line: 66
+Info (12129): Elaborating entity "Timer" using architecture "A:behavioral" for hierarchy "Timer:timer" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/TopLevel.vhd Line: 73
+Info (12129): Elaborating entity "BcdDisplay" using architecture "A:behavioral" for hierarchy "BcdDisplay:bcddisplay" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/TopLevel.vhd Line: 79
+Info (12129): Elaborating entity "Bin2Bcd" using architecture "A:behavioral" for hierarchy "BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/BcdDisplay.vhd Line: 22
+Info (12129): Elaborating entity "Decoder7Led" using architecture "A:behavioral" for hierarchy "BcdDisplay:bcddisplay|Decoder7Led:Decoder7Led" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/BcdDisplay.vhd Line: 30
+Info (12129): Elaborating entity "RegisterBank" using architecture "A:behavioral" for hierarchy "RegisterBank:registerbank" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/TopLevel.vhd Line: 87
+Info (12129): Elaborating entity "AritmeticUnit" using architecture "A:behavioral" for hierarchy "AritmeticUnit:aritmeticunit" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/TopLevel.vhd Line: 97
+Info (12129): Elaborating entity "Adder8" using architecture "A:behavioral" for hierarchy "AritmeticUnit:aritmeticunit|Adder8:adder8_1" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/AritmeticUnit.vhd Line: 24
+Warning (10541): VHDL Signal Declaration warning at Adder8.vhd(9): used implicit default value for signal "cout" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Adder8.vhd Line: 9
+Info (12129): Elaborating entity "FullAdder" using architecture "A:behavioral" for hierarchy "AritmeticUnit:aritmeticunit|Adder8:adder8_1|FullAdder:bit0" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Adder8.vhd Line: 16
+Info (12129): Elaborating entity "Adder9" using architecture "A:behavioral" for hierarchy "AritmeticUnit:aritmeticunit|Adder9:adder9_1" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/AritmeticUnit.vhd Line: 31
+Warning (10541): VHDL Signal Declaration warning at Adder9.vhd(9): used implicit default value for signal "cout" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Adder9.vhd Line: 9
+Info (12129): Elaborating entity "Adder10" using architecture "A:behavioral" for hierarchy "AritmeticUnit:aritmeticunit|Adder10:adder10_1" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/AritmeticUnit.vhd Line: 38
+Warning (10541): VHDL Signal Declaration warning at Adder10.vhd(9): used implicit default value for signal "cout" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Adder10.vhd Line: 9
+Info (12129): Elaborating entity "MuxFilter" using architecture "A:behavioral" for hierarchy "MuxFilter:muxfilter" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/TopLevel.vhd Line: 109
+Info (12129): Elaborating entity "Ram_256x8" using architecture "A:behavioral" for hierarchy "Ram_256x8:ram" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/TopLevel.vhd Line: 115
+Info (12129): Elaborating entity "BcdDisplayRam" using architecture "A:behavioral" for hierarchy "BcdDisplayRam:bcddisplayram" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/TopLevel.vhd Line: 124
+Info (278001): Inferred 8 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|Mod0" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Bin2Bcd.vhd Line: 30
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|Div0" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Bin2Bcd.vhd Line: 29
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|Mod1" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Bin2Bcd.vhd Line: 32
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|Div1" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Bin2Bcd.vhd Line: 31
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|Mod0" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Bin2Bcd.vhd Line: 30
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|Div0" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Bin2Bcd.vhd Line: 29
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|Mod1" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Bin2Bcd.vhd Line: 32
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|Div1" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Bin2Bcd.vhd Line: 31
+Info (12130): Elaborated megafunction instantiation "BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Mod0" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Bin2Bcd.vhd Line: 30
+Info (12133): Instantiated megafunction "BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Mod0" with the following parameter: File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Bin2Bcd.vhd Line: 30
+    Info (12134): Parameter "LPM_WIDTHN" = "8"
+    Info (12134): Parameter "LPM_WIDTHD" = "8"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_q9m.tdf
+    Info (12023): Found entity 1: lpm_divide_q9m File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/db/lpm_divide_q9m.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_fkh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_fkh File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/db/sign_div_unsign_fkh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_i4f.tdf
+    Info (12023): Found entity 1: alt_u_div_i4f File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/db/alt_u_div_i4f.tdf Line: 27
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_7pc.tdf
+    Info (12023): Found entity 1: add_sub_7pc File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/db/add_sub_7pc.tdf Line: 23
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_8pc.tdf
+    Info (12023): Found entity 1: add_sub_8pc File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/db/add_sub_8pc.tdf Line: 23
+Info (12130): Elaborated megafunction instantiation "BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Div0" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Bin2Bcd.vhd Line: 29
+Info (12133): Instantiated megafunction "BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Div0" with the following parameter: File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Bin2Bcd.vhd Line: 29
+    Info (12134): Parameter "LPM_WIDTHN" = "8"
+    Info (12134): Parameter "LPM_WIDTHD" = "8"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_nhm.tdf
+    Info (12023): Found entity 1: lpm_divide_nhm File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/db/lpm_divide_nhm.tdf Line: 25
+Info (12130): Elaborated megafunction instantiation "BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Mod1" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Bin2Bcd.vhd Line: 32
+Info (12133): Instantiated megafunction "BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Mod1" with the following parameter: File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Bin2Bcd.vhd Line: 32
+    Info (12134): Parameter "LPM_WIDTHN" = "4"
+    Info (12134): Parameter "LPM_WIDTHD" = "8"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_m9m.tdf
+    Info (12023): Found entity 1: lpm_divide_m9m File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/db/lpm_divide_m9m.tdf Line: 25
+Info (12130): Elaborated megafunction instantiation "BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Div1" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Bin2Bcd.vhd Line: 31
+Info (12133): Instantiated megafunction "BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Div1" with the following parameter: File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/Bin2Bcd.vhd Line: 31
+    Info (12134): Parameter "LPM_WIDTHN" = "4"
+    Info (12134): Parameter "LPM_WIDTHD" = "8"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_jhm.tdf
+    Info (12023): Found entity 1: lpm_divide_jhm File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/db/lpm_divide_jhm.tdf Line: 25
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "HEX2[1]" is stuck at GND File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/TopLevel.vhd Line: 11
+    Warning (13410): Pin "HEX2[2]" is stuck at GND File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/TopLevel.vhd Line: 11
+    Warning (13410): Pin "HEX2[6]" is stuck at VCC File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/TopLevel.vhd Line: 11
+    Warning (13410): Pin "HEX6[1]" is stuck at GND File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/TopLevel.vhd Line: 15
+    Warning (13410): Pin "HEX6[2]" is stuck at GND File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/TopLevel.vhd Line: 15
+    Warning (13410): Pin "HEX6[6]" is stuck at VCC File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/TopLevel.vhd Line: 15
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 6 registers lost all their fanouts during netlist optimizations.
+Info (17016): Found the following redundant logic cells in design
+    Info (17048): Logic cell "BcdDisplay:bcddisplay|Bin2Bcd:bin2bcd|lpm_divide:Mod1|lpm_divide_m9m:auto_generated|sign_div_unsign_fkh:divider|alt_u_div_i4f:divider|add_sub_7_result_int[0]~16" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/db/alt_u_div_i4f.tdf Line: 62
+    Info (17048): Logic cell "BcdDisplayRam:bcddisplayram|Bin2Bcd:bin2bcd|lpm_divide:Mod1|lpm_divide_m9m:auto_generated|sign_div_unsign_fkh:divider|alt_u_div_i4f:divider|add_sub_7_result_int[0]~16" File: C:/Users/andre/UA/LSD/PROJETO_FINAL/PROJETO/db/alt_u_div_i4f.tdf Line: 62
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 4809 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 5 input pins
+    Info (21059): Implemented 56 output pins
+    Info (21061): Implemented 4748 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 12 warnings
+    Info: Peak virtual memory: 4850 megabytes
+    Info: Processing ended: Wed Jun 22 10:17:18 2022
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:21
+
+

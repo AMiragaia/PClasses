@@ -1,0 +1,44 @@
+# do Dec2_4t.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 13:28:52 on Dec 06,2021
+# vcom -work work Dec2_4t.vho 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package VITAL_Timing
+# -- Loading package VITAL_Primitives
+# -- Loading package cycloneive_atom_pack
+# -- Loading package cycloneive_components
+# -- Compiling entity Dec4_16
+# -- Compiling architecture structure of Dec4_16
+# End time: 13:28:52 on Dec 06,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 13:28:52 on Dec 06,2021
+# vcom -work work ee.vwf.vht 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity Dec4_16_vhd_vec_tst
+# -- Compiling architecture Dec4_16_arch of Dec4_16_vhd_vec_tst
+# End time: 13:28:52 on Dec 06,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -c -t 1ps -L cycloneive -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.Dec4_16_vhd_vec_tst 
+# Start time: 13:28:52 on Dec 06,2021
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.dec4_16_vhd_vec_tst(dec4_16_arch)
+# Loading ieee.vital_timing(body)
+# Loading ieee.vital_primitives(body)
+# Loading cycloneive.cycloneive_atom_pack(body)
+# Loading cycloneive.cycloneive_components
+# Loading work.dec4_16(structure)
+# Loading ieee.std_logic_arith(body)
+# Loading cycloneive.cycloneive_io_obuf(arch)
+# Loading cycloneive.cycloneive_io_ibuf(arch)
+# Loading cycloneive.cycloneive_lcell_comb(vital_lcell_comb)
+# after#31
+# End time: 13:28:53 on Dec 06,2021, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0

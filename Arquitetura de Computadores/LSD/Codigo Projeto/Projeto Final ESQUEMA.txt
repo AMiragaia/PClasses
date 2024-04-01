@@ -1,0 +1,19 @@
+256 palavras de 8 bits
+128 segundos
+filtro para 64 palavras
+1 palavra por cada 2 segundos
+freq = 2 HZ
+
+
+0 1 2 3 k = 2
+1 2 3 4 k = 3
+
+Para fazer o Gerador de endereços temos que instanciar:
+counter (feito)
+freq divider (clock)
+bin7segDecoder
+Rom
+RAM
+
+241
+0010 0100 0001
