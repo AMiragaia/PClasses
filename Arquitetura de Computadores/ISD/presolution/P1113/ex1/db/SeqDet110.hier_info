@@ -1,9 +1,0 @@
-|SeqDet110
-y <= inst2.DB_MAX_OUTPUT_PORT_TYPE
-clk => inst.CLK
-clk => inst1.CLK
-x => inst1.DATAIN
-x => inst4.IN1
-x => inst2.IN1
-
-

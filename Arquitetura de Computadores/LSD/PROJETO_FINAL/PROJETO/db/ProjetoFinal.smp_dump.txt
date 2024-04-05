@@ -1,9 +1,0 @@
-
-State Machine - |TopLevel|ControlUnit:controlunit|estado
-Name estado.Filter1 estado.Filter0 estado.WriteData estado.ResetRam estado.ReadData estado.S 
-estado.S 0 0 0 0 0 0 
-estado.ReadData 0 0 0 0 1 1 
-estado.ResetRam 0 0 0 1 0 1 
-estado.WriteData 0 0 1 0 0 1 
-estado.Filter0 0 1 0 0 0 1 
-estado.Filter1 1 0 0 0 0 1 
