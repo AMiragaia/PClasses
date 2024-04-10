@@ -1,0 +1,75 @@
+#Faça todas as configurações necessárias e que mostre nos 5 LED, ligados aos portos RE6 a RE2, o padrão 00001,00010,00100,...,10000,00001.
+#Valor inicial 00001, o padrão deve mudar com uma frequência de 2.3Hz, o valor padrão deve ser também mostrado no ecrã do PC, em binário formatado com 5 bits.
+#(Os valores devem ser apresentados em lihas consecutivas do ecrã). O valor da freq deve ter o menor erro possível.
+#Endereço dos portos a usar:
+#TRISB: 0xBF886040 PORTB: 0xBF886050 LATB: 0xBF886060
+#TRISE: 0xBF886100 PORTE: 0xBF886100 LATE: 0xBF886120
+#Aqui o que é imporante é perceber as funções das Portas.
+#A função do TRISxn é configurar no porto x o bit n como input ou output.
+#Exemplo, neste exercicio queremos mostrar nos portos RE6 a RE2 um valor, ou seja vao ser bits de saida, dai terem que ser colocados a 1.
+#O Registo LATx só pode ser usado em portos configurador como saida porque vai ser usado para escrever lá.
+#O Registo PORTx é o inverso, pelo que é usado para ler valores em portos de entrada.
+
+
+.data
+	.equ SFR_BASE_HI,0xBF88
+	.equ TRISB,0x6040
+    	.equ PORTB,0x6050
+    	.equ LATB, 0x6060
+	.equ TRISE,0x6100
+    	.equ PORTE,0x6110
+    	.equ LATE, 0x6120
+	.equ RESET_CORE_TIMER, 12
+        .equ READ_CORE_TIMER, 11
+	.text
+	.globl main
+main:
+    addiu $sp, $sp, -12
+    sw $ra, 0($sp)
+    sw $s0, 4($sp)
+    sw $s1, 8($sp)
+
+    lui $s0, SFR_BASE_HI
+    lw $t1, TRISE($s0)
+    andi $t1, $t1, 0xFF83
+    sw $t1, TRISE($s0)
+
+    li $s1, 0x04  # Inicializa $s1 para alinhar o padrão inicial com RE2 (00001 após deslocamento)
+
+while:
+    lw $t1, LATE($s0)
+    andi $t1, $t1, 0xFF83
+    or $t1, $s1, $t1
+    sw $t1, LATE($s0)
+
+    li $a0, 434
+    jal delay
+
+    sll $s1, $s1, 1
+    andi $s1, $s1, 0x007C  # Garante que o valor não exceda os limites de RE6 a RE2
+    bne $s1, $zero, continue  # Se $s1 for diferente de zero, não precisa resetar
+    li $s1, 0x04  # Reset para o padrão inicial (00001 binário em RE2-RE6)
+continue:
+    j while
+
+    lw $ra, 0($sp)
+    lw $s0, 4($sp)
+    lw $s1, 8($sp)
+    addiu $sp, $sp, 12
+    jr $ra
+
+
+delay:
+    move $t0, $a0
+for:
+    ble $t0, $zero, endfor
+    li $v0, RESET_CORE_TIMER
+    syscall
+read:
+    li $v0, READ_CORE_TIMER
+    syscall
+    blt $v0, 20000, read
+    addi $t0, $t0, -1
+    j for
+endfor:
+    jr $ra
