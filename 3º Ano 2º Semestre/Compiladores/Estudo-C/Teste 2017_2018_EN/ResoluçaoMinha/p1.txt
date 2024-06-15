@@ -1,0 +1,6 @@
+## p1.txt
+output 2+3i;    ## escreve na consola o número 2 + 3i
+output 4;       ## escreve na consola o número 4
+output i;       ## escreve na consola o número i
+4-i => c;       ## guarda o número 4 - i na variável consola
+output c;       ## escreve na consola o número armazenado na várivel c

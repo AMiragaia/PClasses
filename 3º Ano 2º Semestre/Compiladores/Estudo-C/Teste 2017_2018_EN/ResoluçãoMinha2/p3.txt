@@ -1,0 +1,6 @@
+## p3.txt
+output input "n";       ## (input) pede as partes reais e imaginárias de um número complexo
+                        ## ao utilizador apresentando os textos "n(re): " e "n(im): ",
+                        ## e (output) escreve o número na consola
+(input "n") : ( input "n2"  ) => div;
+output div;

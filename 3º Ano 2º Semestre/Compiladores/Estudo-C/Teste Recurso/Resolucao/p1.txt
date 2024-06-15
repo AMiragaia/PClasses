@@ -1,0 +1,6 @@
+*COM* p1.txt
+display 2+3i;
+display 4;
+display i;
+c <= 4.3-i;
+display c;
