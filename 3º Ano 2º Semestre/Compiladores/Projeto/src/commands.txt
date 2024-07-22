@@ -1,0 +1,8 @@
+java -jar antlr-4.13.1-complete.jar -Dlanguage=Python3 pdraw.g4
+java -jar antlr-4.13.1-complete.jar -Dlanguage=Python3 -visitor pdraw.g4		
+
+pip install graphics.py
+sudo pip install antlr4-python3-runtime==4.13.1
+
+antlr4-build pdraw
+cat ../examples/p1.pdraw | antlr4-run

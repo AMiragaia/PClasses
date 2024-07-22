@@ -1,0 +1,38 @@
+define canvas CanvasSun "Sun Drawing" (400,400);
+
+define pen PenTypeSun {
+    color = yellow;
+    position = (200,200);
+    orientation = 0;
+    thickness = 2;
+    pressure = 1;
+};
+
+pen penSun = new PenTypeSun;
+
+% Drawing the sun rays
+penSun down;
+
+for (int i = 0; i < 12; i = i + 1) {
+    penSun forward 80;
+    penSun backward 80;
+    penSun right 30;
+}
+penSun up;
+
+% Drawing the sun center
+penSun down;
+penSun <- color = orange;
+penSun left 90;
+for (int j = 0; j < 36; j = j + 1) {
+    penSun forward 10;
+    penSun right 10;
+}
+penSun up;
+
+% Print to stdout
+penSun -> stdout;
+"\n" -> stdout;
+pause 2000000;
+
+canvas CanvasSun color <- cyan

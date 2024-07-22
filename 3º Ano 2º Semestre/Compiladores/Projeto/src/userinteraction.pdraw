@@ -1,0 +1,35 @@
+define canvas Canvas4 "Advanced User Interaction" (700,700);
+
+define pen PenType4 {
+   color = black;
+   position = (350,350);
+   orientation = 0;
+   thickness = 4;
+   pressure = 0;
+};
+
+pen p4 = new PenType4;
+
+int x = int(stdin "Enter initial x position: ");
+int y = int(stdin "Enter initial y position: ");
+
+p4 <- position (x, y);
+p4 down;
+
+string answer = stdin "Do you want to draw a square (yes/no)? ";
+
+if (answer == "yes" or answer == "y") {
+    for (int i = 0; i < 4; i = i + 1) {
+        p4 forward 100 right 90º;
+        
+    }
+}
+if (answer == "no" or answer == "n") {
+    p4 <- color red;
+    p4 forward 50 right 45º forward 50 left 90º forward 50 right 45º forward 50;
+    canvas Canvas4 color <- pink
+}
+
+p4 up;
+p4 -> stdout;
+"\n" -> stdout;

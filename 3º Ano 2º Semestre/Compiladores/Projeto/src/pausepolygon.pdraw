@@ -1,0 +1,38 @@
+define canvas Canvas2 "Dynamic Color Polygon" (600,600);
+
+define pen PenType2 {
+   color = black;
+   position = (300,300);
+   orientation = 0;
+   thickness = 2;
+   pressure = 0;
+};
+
+pen p2 = new PenType2;
+
+int sides = int(stdin "Enter the number of sides for the polygon: ");
+real angle = 360.0 / sides;
+
+p2 down;
+for (int i = 0; i < sides; i = i + 1) {
+   if (i == 0)
+      p2 <- color red;
+   if (i == 1)
+      p2 <- color lime;
+   if (i == 2)
+      p2 <- color blue;
+   if (i == 3)
+      p2 <- color yellow;
+   if (i == 4)
+      p2 <- color cyan;
+   if (i == 5)
+      p2 <- color pink;
+   if (i >= 6)
+      p2 <- color orange;
+   p2 forward 100 right angleº;
+   pause 500000; % pause for 0.5 seconds between each side
+}
+p2 up;
+
+p2 -> stdout;
+"\n" -> stdout;

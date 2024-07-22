@@ -1,0 +1,52 @@
+define canvas CanvasHouse "House Drawing" (600, 600);
+
+define pen PenTypeHouse {
+    color = black;
+    position = (100, 300);
+    orientation = 0;
+    thickness = 2;
+    pressure = 1;
+};
+
+pen penHouse = new PenTypeHouse;
+
+% Draw the house
+penHouse down;
+penHouse forward 200;
+penHouse right 90º;
+penHouse forward 200;
+penHouse right 90º;
+penHouse forward 200;
+penHouse right 90º;
+penHouse forward 200;
+penHouse right 90º;
+penHouse up;
+
+% Draw the roof
+
+penHouse <- position = (100, 300);
+penHouse <- color = red;
+penHouse down;
+penHouse left 45º forward 140.7;
+penHouse right 90º forward 140.7;
+penHouse up;
+
+% Draw the door
+
+penHouse <- orientation 0;
+penHouse <- position = (200, 400);
+penHouse <- color = gray;
+penHouse down;
+penHouse forward 50;
+penHouse right 90º;
+penHouse forward 100;
+penHouse right 90º;
+penHouse forward 50;
+penHouse right 90º;
+penHouse forward 100;
+penHouse up;
+
+% Print to stdout
+penHouse -> stdout;
+"\n" -> stdout;
+pause 2000;

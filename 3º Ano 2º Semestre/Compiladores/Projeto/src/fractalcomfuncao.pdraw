@@ -1,0 +1,44 @@
+define canvas Canvas4 "Fractal Tree" (800,800);
+
+define pen PenType4 {
+   color = blue;
+   position = (400,0);
+   orientation = 90;
+   thickness = 2;
+   pressure = 0;
+};
+
+pen p1 = new PenType4;
+
+real branch_length = real(stdin "Enter the initial branch length: ");
+int depth = int(stdin "Enter the depth of the tree: ");
+
+def function drawBranch(real length, int dor) {
+    if (dor >= 0) {
+        p1 down forward length;
+        p1 left 30º;
+        functionador drawBranch(length * 0.7, dor - 1);
+        p1 right 60º;
+        functionador drawBranch(length * 0.7, dor - 1);
+        p1 left 30º;
+        p1 backward length;
+        p1 up;
+       
+        if( int(dor) >= 6 and real(dor) < 8 )
+            canvas Canvas4 color <- #f0f2f4
+        if( dor == 0 or dor >= 2 and dor <= 4 xor dor == 3) {
+            dor -> stdout;
+            canvas Canvas4 color <- #ffffff
+        }
+    }
+    
+    
+}
+
+p1 <- position (400, 0);
+p1 down;
+functionador drawBranch(branch_length, depth);
+p1 up;
+
+p1 -> stdout;
+"\n" -> stdout;

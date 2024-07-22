@@ -1,0 +1,171 @@
+// Testes para variáveis e tipos básicos
+int x = 10; // x = 10
+real y = 20.5; // y = 20.5
+bool z = true; // z = true
+string s = "Hello"; // s = "Hello"
+
+// Testes para comandos de impressão
+print x; // 10
+print y; // 20.5
+print z; // true
+print s; // Hello
+
+// Testes para operações matemáticas e lógicas
+x = 5 + 3 * 2 - 1 / 2; // x = 10
+y = (10.0 + 5.0) / 3.0 - 2.5 * 2.0; // y = 0.833333
+z = (true && false) || (false || true); // z = true
+z = !z; // z = false
+
+// Testes para manipulação de strings
+string greeting = "Hello, "; // greeting = "Hello, "
+string name = "World!"; // name = "World!"
+string message = greeting + name; // message = "Hello, World!"
+print message; // Hello, World!
+
+// Testes para loops for
+for (int i = 0; i < 10; i = i + 1) {
+    print i; // 0 1 2 3 4 5 6 7 8 9
+}
+
+// Testes para loops until
+int count = 0;
+until (count == 10) {
+    print count; // 0 1 2 3 4 5 6 7 8 9
+    count = count + 1;
+}
+
+// Testes para definições de caneta e canvas
+Canvas mainCanvas = (100, 100); // mainCanvas = (100, 100)
+Pen myPen;
+myPen = new Pen(mainCanvas); // myPen inicializado com mainCanvas
+
+// Testes para atributos de caneta
+myPen.thickness = 2; // Espessura da caneta definida para 2
+myPen.pressure = 5; // Pressão da caneta definida para 5
+myPen.color = "red"; // Cor da caneta definida para vermelho
+
+// Testes para opções de movimento de caneta
+myPen.forward(10); // Caneta move-se para frente 10 unidades
+myPen.backward(5); // Caneta move-se para trás 5 unidades
+myPen.left(90); // Caneta gira 90 graus à esquerda
+myPen.right(45); // Caneta gira 45 graus à direita
+myPen.up(); // Caneta levantada
+myPen.down(); // Caneta abaixada
+myPen.pause(1000); // Caneta pausa por 1000ms
+
+// Testes para ações de caneta
+myPen.draw(); // Desenha no canvas
+myPen.clear(); // Limpa o canvas
+myPen.reset(); // Reseta a caneta
+
+// Testes para definição e chamada de funções
+function int add(int a, int b) {
+    return a + b;
+}
+int sum = add(3, 4); // sum = 7
+print sum; // 7
+
+function real multiply(real a, real b) {
+    return a * b;
+}
+real product = multiply(2.5, 4.0); // product = 10.0
+print product; // 10.0
+
+function string concatenate(string a, string b) {
+    return a + b;
+}
+string fullName = concatenate("John", "Doe"); // fullName = "JohnDoe"
+print fullName; // JohnDoe
+
+// Testes para estruturas condicionais
+if (x > 5) {
+    print "x is greater than 5"; // x is greater than 5
+} else if (x == 5) {
+    print "x is equal to 5";
+} else {
+    print "x is less than 5";
+}
+
+// Testes para comandos switch
+switch (x) {
+    case 1:
+        print "x is 1";
+        break;
+    case 2:
+        print "x is 2";
+        break;
+    default:
+        print "x is neither 1 nor 2"; // x is neither 1 nor 2
+}
+
+// Testes para arrays e manipulação de arrays
+int[] numbers = [1, 2, 3, 4, 5];
+for (int i = 0; i < length(numbers); i = i + 1) {
+    print numbers[i]; // 1 2 3 4 5
+}
+
+real[] reals = [1.1, 2.2, 3.3];
+for (int i = 0; i < length(reals); i = i + 1) {
+    print reals[i]; // 1.1 2.2 3.3
+}
+
+string[] strings = ["one", "two", "three"];
+for (int i = 0; i < length(strings); i = i + 1) {
+    print strings[i]; // one two three
+}
+
+// Testes para manipulação de variáveis globais e locais
+int globalVar = 10;
+
+function void modifyGlobal() {
+    globalVar = globalVar + 5;
+}
+
+print globalVar; // 10
+modifyGlobal();
+print globalVar; // 15
+
+// Testes para execução de comandos externos
+execute "external_script.pdraw"; // Executa script externo
+
+// Testes para comentários
+// Este é um comentário de linha única
+/* Este é um comentário
+   de múltiplas linhas */
+
+// Testes adicionais para canvas e caneta
+Canvas secondaryCanvas = (200, 200); // secondaryCanvas = (200, 200)
+Pen anotherPen = new Pen(secondaryCanvas); // anotherPen inicializado com secondaryCanvas
+anotherPen.thickness = 1; // Espessura da caneta definida para 1
+anotherPen.color = "blue"; // Cor da caneta definida para azul
+anotherPen.forward(50); // Caneta move-se para frente 50 unidades
+anotherPen.left(90); // Caneta gira 90 graus à esquerda
+anotherPen.forward(50); // Caneta move-se para frente 50 unidades
+anotherPen.draw(); // Desenha no canvas
+
+// Testes de falha
+
+// Erro de sintaxe: declaração de variável inválida
+int 1invalid = 5; // Erro: Nome de variável inválido
+
+// Erro de sintaxe: atribuição inválida
+x = "string"; // Erro: Tipo incompatível
+
+// Erro de semântica: divisão por zero
+int zeroDiv = 10 / 0; // Erro: Divisão por zero
+
+// Erro de semântica: operação inválida com tipos incompatíveis
+real invalidOp = x + "string"; // Erro: Tipos incompatíveis
+
+// Erro de semântica: função chamada com argumentos incorretos
+int wrongSum = add(1.5, "string"); // Erro: Tipos de argumento incorretos
+
+// Erro de semântica: acesso a índice fora do limite do array
+print numbers[10]; // Erro: Índice fora do limite do array
+
+// Erro de semântica: variável não inicializada
+int uninitializedVar;
+print uninitializedVar; // Erro: Variável não inicializada
+
+// Erro de semântica: redefinição de variável global
+int globalVar = 20; // Erro: Redefinição de variável global

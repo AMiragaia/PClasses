@@ -1,0 +1,244 @@
+from antlr4 import *
+from ipdrawParser import ipdrawParser
+from ipdrawVisitor import ipdrawVisitor
+
+class SecondaryCompInterpraDor(ipdrawVisitor):
+
+   def __init__(self):
+      self.dicio_vars = {}
+      self.dicio_lis_compatible_types = {"real": ["real", "int"],   "int":['real', 'int'],  "bool":['bool'], 'point':['point', 'pen'],   'pen':['point']}
+
+   def visitProgram(self, ctx:ipdrawParser.ProgramContext):
+      return self.visitChildren(ctx)
+      """ for stat in ctx.stat():
+        self.visit(stat) 
+      return None """      # faz o mesmo que a linha acima; visita todos os nós filhos do contexto
+
+   def visitStat_penCmd(self, ctx:ipdrawParser.Stat_penCmdContext):
+      return self.visitChildren(ctx)
+
+   def visitStat_varAssignment(self, ctx:ipdrawParser.Stat_varAssignmentContext):
+      return self.visitChildren(ctx)
+
+   def visitStat_varDeclaration(self, ctx:ipdrawParser.Stat_varDeclarationContext):
+      return self.visitChildren(ctx)
+
+   def visitStat_if(self, ctx:ipdrawParser.Stat_ifContext):
+      return self.visitChildren(ctx)
+
+   def visitStat_Until(self, ctx:ipdrawParser.Stat_UntilContext):
+      return self.visitChildren(ctx)
+
+   def visitStat_For(self, ctx:ipdrawParser.Stat_ForContext):
+      return self.visitChildren(ctx)
+
+   def visitStat_Curly(self, ctx:ipdrawParser.Stat_CurlyContext):
+      return self.visitChildren(ctx)
+
+   def visitPenCmd_pos(self, ctx:ipdrawParser.PenCmd_posContext):
+      return self.visitChildren(ctx)
+
+   def visitPenCmd_color(self, ctx:ipdrawParser.PenCmd_colorContext):
+      return self.visitChildren(ctx)
+
+   def visitPenCmd_orientation(self, ctx:ipdrawParser.PenCmd_orientationContext):
+      expr_type = self.visit(ctx.expr())
+      if expr_type not in ('int', 'real'):
+         raise Exception("Erro semântico ipdraw: o valor atribuído à orientação não é do tipo 'real' ou 'int'.")
+      return None
+
+   def visitPenCmd_thickness(self, ctx:ipdrawParser.PenCmd_thicknessContext):
+      expr_type = self.visit(ctx.expr())
+      if expr_type not in ('int', 'real'):
+         raise Exception("Erro semântico ipdraw: o valor atribuído à espessura não é do tipo 'real' ou 'int'.")
+      return None
+
+   def visitPenCmd_pressure(self, ctx:ipdrawParser.PenCmd_pressureContext):
+      expr_type = self.visit(ctx.expr())
+      if expr_type not in ('int', 'real'):
+         raise Exception("Erro semântico ipdraw: o valor atribuído à pressão não é do tipo 'real' ou 'int'.")
+      return None
+
+   def visitPenCmd_down(self, ctx:ipdrawParser.PenCmd_downContext):
+      return self.visitChildren(ctx)
+
+   def visitPenCmd_up(self, ctx:ipdrawParser.PenCmd_upContext):
+      return self.visitChildren(ctx)
+
+   def visitPenCmd_forward(self, ctx:ipdrawParser.PenCmd_forwardContext):
+      expr_type = self.visit(ctx.expr())
+      if expr_type not in ('int', 'real'):
+         raise Exception("Erro semântico ipdraw: o valor atribuído à distância não é do tipo 'real' ou 'int'.")
+      return None
+
+   def visitPenCmd_backward(self, ctx:ipdrawParser.PenCmd_backwardContext):
+      expr_type = self.visit(ctx.expr())
+      if expr_type not in ('int', 'real'):
+         raise Exception("Erro semântico ipdraw: o valor atribuído à distância não é do tipo 'real' ou 'int'.")
+      return None
+
+   def visitPenCmd_left(self, ctx:ipdrawParser.PenCmd_leftContext):
+      expr_type = self.visit(ctx.expr())
+      if expr_type not in ('int', 'real'):
+         raise Exception("Erro semântico ipdraw: o valor atribuído ao valor a rodar para a esquerda não é do tipo 'real' ou 'int'.")
+      return None
+
+   def visitPenCmd_right(self, ctx:ipdrawParser.PenCmd_rightContext):
+      expr_type = self.visit(ctx.expr())
+      if expr_type not in ('int', 'real'):
+         raise Exception("Erro semântico ipdraw: o valor atribuído ao valor a rodar para a direita não é do tipo 'real' ou 'int'.")
+      return None
+
+   def visitPenCmd_pause(self, ctx:ipdrawParser.PenCmd_pauseContext):
+      if ctx.expr() not in ['real', 'int']:
+         raise Exception("Erro semântico ipdraw: o valor atribuído ao pause não é do tipo 'real' ou 'int'.")
+      return None
+
+   def visitVarAssignment(self, ctx:ipdrawParser.VarAssignmentContext):
+      var_type = ctx.TYPE().getText() if ctx.TYPE() else None
+      assignments = zip(ctx.ID(), ctx.expr())
+
+      lis_types_real_int = True
+
+      for var, expr in assignments:
+         var_name = var.getText()
+         expr_type = self.visit(expr)
+         if var_type:
+            if var_name in self.dicio_vars:     # se há tipo, é porque estas variáveis deviam de estar a ser declaradas pela primeira vez, e não deviam estar no dicio_vars
+               raise Exception("Erro semântico ipdraw: a variável {var_name} já foi declarada, e não pode ser declarada outra vez.")
+            self.dicio_vars[var_name] = var_type
+         else:
+            if var_name not in self.dicio_vars:    # e se não há tipo, é porque se presume que a variável já existe
+               raise Exception("Erro semântico ipdraw: a variável {var_name} não pode ser usada sem ser declarada previamente.")
+         if expr_type != self.dicio_vars[var_name]: # se a variável existe, o tipo com que foi declarado tem que ser consistente com o tipo que está a ser agora usado 
+            raise Exception("Erro semântico ipdraw: a variável {var_name} foi declarada com o tipo {self.dicio_vars[var_name]}, e não pode ser usada como {expr_type}.")
+         if self.dicio_vars[var_name] not in ['real', 'int']:
+            lis_types_real_int = False
+      return var_type, lis_types_real_int # retorna o tipo, caso haja, e um valor boolean a indicar se os assignments feitos são do tipo real ou int (para fins de verificar na função do ciclo for se os assignments fazem sentido)
+
+   def visitVarDeclaration(self, ctx:ipdrawParser.VarDeclarationContext):
+      var_type = ctx.TYPE().getText()
+      for var in ctx.ID():
+         var_name = var.getText()
+         if var_name in self.dicio_vars:     # se há tipo, é porque estas variáveis deviam de estar a ser declaradas pela primeira vez, e não deviam estar no dicio_vars
+            raise Exception("Erro semântico ipdraw: a variável {var_name} já foi declarada, e não pode ser declarada outra vez.")
+         self.dicio_vars[var_name] = var_type
+      return None
+
+   def visitExpr_int(self, ctx:ipdrawParser.Expr_intContext):
+      return 'int'
+
+   def visitExpr_parenthesis(self, ctx:ipdrawParser.Expr_parenthesisContext):
+      return self.visit(ctx.expr())
+
+   def visitExpr_sum(self, ctx:ipdrawParser.Expr_sumContext):
+      expr1_type = self.visit(ctx.expr(0))
+      expr2_type = self.visit(ctx.expr(1))
+
+      if expr1_type in ['real', 'int'] and expr2_type in self.dicio_lis_compatible_types[expr1_type]:
+         return expr1_type
+      raise Exception("Erro semântico ipdraw: o tipo {expr1_type} não é compatível com {expr2_type}, ou não é apto para operações como adição.")
+
+   def visitExpr_or(self, ctx:ipdrawParser.Expr_orContext):
+      expr1_type = self.visit(ctx.expr(0))
+      expr2_type = self.visit(ctx.expr(1))
+
+      if expr1_type == 'bool' and expr2_type in self.dicio_lis_compatible_types[expr1_type]:
+         return expr1_type
+      raise Exception("Erro semântico ipdraw: o tipo {expr1_type} não é compatível com {expr2_type}, ou não é apto para operações booleanas.")
+
+   def visitExpr_REAL(self, ctx:ipdrawParser.Expr_REALContext):
+      return 'real'
+
+   def visitExpr_and(self, ctx:ipdrawParser.Expr_andContext):
+      expr1_type = self.visit(ctx.expr(0))
+      expr2_type = self.visit(ctx.expr(1))
+
+      if expr1_type == 'bool' and expr2_type in self.dicio_lis_compatible_types[expr1_type]:
+         return expr1_type
+      raise Exception("Erro semântico ipdraw: o tipo {expr1_type} não é compatível com {expr2_type}, ou não é apto para operações booleanas.")
+
+   def visitExpr_bool(self, ctx:ipdrawParser.Expr_boolContext):
+      return 'bool'
+
+   def visitExpr_comparison(self, ctx:ipdrawParser.Expr_comparisonContext):
+      expr1_type = self.visit(ctx.expr(0))
+      expr2_type = self.visit(ctx.expr(1))
+
+      if expr1_type in ['real', 'int'] and expr2_type in self.dicio_lis_compatible_types[expr1_type]:
+         return 'bool'
+      raise Exception("Erro semântico ipdraw: o tipo {expr1_type} não é compatível com {expr2_type}, ou não é apto para operações de comparação.")
+
+   def visitExpr_not(self, ctx:ipdrawParser.Expr_notContext):
+      condition_type = self.visit(ctx.expr()) 
+      if condition_type != 'bool':
+         raise Exception("Erro semântico ipdraw: o tipo esperado para a expressão a negar é 'bool', mas foi recebido {condition_type}.")
+      return None
+
+   def visitExpr_mul(self, ctx:ipdrawParser.Expr_mulContext):
+      expr1_type = self.visit(ctx.expr(0))
+      expr2_type = self.visit(ctx.expr(1))
+
+      #if expr1_type in ['real', 'int'] and expr2_type in ['real', 'int']:
+      if expr1_type in ['real', 'int'] and expr2_type in self.dicio_lis_compatible_types[expr1_type]:
+         return expr1_type
+      raise Exception("Erro semântico ipdraw: o tipo {expr1_type} não é compatível com {expr2_type}, ou não é apto para operações como multiplicação.")
+      
+
+   def visitIf(self, ctx:ipdrawParser.IfContext):
+      condition_type = self.visit(ctx.expr()) 
+      if condition_type != 'bool':
+         raise Exception("Erro semântico ipdraw: o tipo esperado para a condição é 'bool', mas foi recebido {condition_type}.")
+
+
+      corpo = ctx.stat()
+      self.visit(corpo)
+
+      return None
+
+   def visitUntil(self, ctx:ipdrawParser.UntilContext):
+      condition_type = self.visit(ctx.expr()) 
+      if condition_type != 'bool':
+         raise Exception("Erro semântico ipdraw: o tipo esperado para a condição é 'bool', mas foi recebido {condition_type}.")
+
+
+      corpo = ctx.stat()
+      self.visit(corpo)
+
+      return None
+
+   def visitFor_loop(self, ctx:ipdrawParser.For_loopContext):
+      assignment_1 = ctx.varAssignment(0)
+      assignment_1_type, real_int_flag = self.visit(assignment_1)
+      if assignment_1_type not in ['real', 'int'] or real_int_flag == False:
+         raise Exception("Erro semântico ipdraw: o tipo esperado para a condição é 'bool', mas foi recebido {condition_type}.")
+
+
+
+      condition = ctx.expr()
+      condition_type = self.visit(condition)
+      if condition_type != 'bool':
+         raise Exception("Erro semântico ipdraw: o tipo esperado para a condição é 'bool', mas foi recebido {condition_type}.")
+
+
+      assignment_2 = ctx.varAssignment(1)
+      assignment_2_type, real_int_flag = self.visit(assignment_2)
+      if assignment_2_type not in ['real', 'int'] or real_int_flag == False:
+         raise Exception("Erro semântico ipdraw: o tipo esperado para a condição é 'bool', mas foi recebido {condition_type}.")
+
+    
+      corpo = ctx.stat()
+      self.visit(corpo)
+
+      return None
+
+   def visitPoint(self, ctx:ipdrawParser.PointContext):
+
+      x_type = self.visit(ctx.expr(0))
+      y_type = self.visit(ctx.expr(1))
+      
+      if x_type not in ('int', 'real') or y_type not in ('int', 'real'):
+         raise Exception("Erro semântico ipdraw: o ponto tem que ser constituído por '(número, número)' e não por '{x_type}, {y_type}'.")
+      
+      return 'point'
+
