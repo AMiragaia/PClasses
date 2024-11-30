@@ -1,8 +1,8 @@
 #include <detpic32.h>
 
-void delay(unsigned int us){
+void delay(unsigned int ms){
     resetCoreTimer();
-    while(readCoreTimer()<20 * us);
+    while(readCoreTimer()< 20000*ms);
 }
 
 void setDutyCycle(unsigned int dc){
@@ -44,3 +44,4 @@ int main(void){
 //Prescaler = 20000000 / (120*65536) = 2.54313151
 //Prescaler = 4 => 2
 //PR3 = (20000000 / 4) / 120 = 41666.666666667
+
